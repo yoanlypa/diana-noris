@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.diananoris.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/"/></url>
+  <url><loc>https://www.diananoris.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/"/></url>
+  <url><loc>https://www.diananoris.com/acting/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/acting/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/actuacion/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/acting/"/></url>
+  <url><loc>https://www.diananoris.com/es/actuacion/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/acting/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/actuacion/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/acting/"/></url>
+  <url><loc>https://www.diananoris.com/film/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/"/></url>
+  <url><loc>https://www.diananoris.com/es/cine/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/"/></url>
+  <url><loc>https://www.diananoris.com/press/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/press/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/prensa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/press/"/></url>
+  <url><loc>https://www.diananoris.com/es/prensa/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/press/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/prensa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/press/"/></url>
+  <url><loc>https://www.diananoris.com/artwork/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/artwork/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/arte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/artwork/"/></url>
+  <url><loc>https://www.diananoris.com/es/arte/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/artwork/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/arte/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/artwork/"/></url>
+  <url><loc>https://www.diananoris.com/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/contacto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/contact/"/></url>
+  <url><loc>https://www.diananoris.com/es/contacto/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/contact/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/contacto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/contact/"/></url>
+</urlset>

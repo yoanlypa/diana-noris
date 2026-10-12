@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "source": "https://askit.dextheme.net/filmoo/?storefront=envato-elements",
+    "analysed_on": "2026-10-12",
+    "what_it_is": "Demo de la plantilla 'Filmoo' (productora de cine). Página de inicio de una sola página larga, estética cinematográfica oscura.",
+    "stack": {
+      "cms": "WordPress",
+      "builder": "Elementor + tema Hello Elementor",
+      "addons": ["Jeg Elementor Kit (jkit)", "Rkit (card slider, post grid)"],
+      "libraries": ["Swiper 8.4.5", "GLightbox 2.2.0", "Magnific Popup"],
+      "entrance_animations": ["fadeIn", "fadeInUp", "rotateIn", "slideInLeft"]
+    },
+    "how_it_was_analysed": "Estilos reales leídos del navegador (colores, fuentes, tamaños, botones) a 1280 px; el aspecto visual se vio en la vista estrecha (móvil). No se pudieron capturar los efectos hover ni el menú desplegable.",
+    "legal_note": "Es una plantilla de pago (Envato Elements). Se puede inspirarse en el estilo y la estructura, pero no copiar su código, imágenes ni textos. Las fuentes (Alumni Sans, DM Sans, Inter) sí son libres de Google Fonts."
+  },
+
+  "design_tokens": {
+    "colors": {
+      "background_main": "#0A0A0A",
+      "surface_cards": "#141414",
+      "white_text_on_dark": "#FFFFFF",
+      "muted_text_light": "#C4C4C4",
+      "muted_text_mid": "#999999",
+      "body_text_default": "#6D6D6D",
+      "accent": "#F1A12F",
+      "hairline_borders": "#99999917",
+      "notes": "Todo el sitio es negro con un único color de acento (naranja ámbar). Sobre el fondo hay una textura de grano muy sutil. Casi no usa otros colores."
+    },
+    "fonts": {
+      "headings": {"family": "Alumni Sans", "weight": 600, "transform": "uppercase", "style": "condensada, alta, muy compacta"},
+      "buttons_and_labels": {"family": "DM Sans", "weights": [500, 700], "transform": "capitalize (botones) / uppercase (etiquetas)"},
+      "body": {"family": "Inter", "size": "16px", "line_height": "1.5", "weight": 400},
+      "quotes": {"family": "DM Sans", "style": "cursiva", "note": "las citas de testimonios van en cursiva y tamaño grande"}
+    },
+    "type_scale_desktop": {
+      "hero_title": {"size": "136px", "line_height": "0.7em", "letter_spacing": "-2px", "color": "accent"},
+      "giant_number": {"size": "450px", "letter_spacing": "-9px", "note": "contador gigante '146+' en letra hueca/contorneada"},
+      "section_title_h2": {"size": "52px", "line_height": "0.7em", "letter_spacing": "-1px"},
+      "subtitle": {"size": "74px"},
+      "card_title": {"size": "30px", "line_height": "0.8em"},
+      "label": {"size": "18px", "family": "DM Sans", "weight": 500, "transform": "uppercase"},
+      "small": {"size": "14px"}
+    },
+    "headline_trick": "Dos tonos en un mismo titular: las primeras palabras en blanco y negrita, el resto en gris claro y peso fino. Ej.: '“GREAT STORIES' (blanco, 600) 'don't happen by accident.' (#C4C4C4, 400).",
+    "buttons": {
+      "primary": {"bg": "#F1A12F", "text": "#FFFFFF", "font": "DM Sans 700 16px", "letter_spacing": "-0.8px", "radius": "10px", "padding": "15px 40px", "border": "0.8px solid #F1A12F"},
+      "secondary_outline": {"bg": "transparent", "text": "#FFFFFF", "border": "0.8px solid #F1A12F", "radius": "10px", "padding": "15px 40px"},
+      "text_link": "'Read More' en blanco, sin caja, con flecha ↗",
+      "icon": "flecha diagonal ↗ al final de los botones y enlaces"
+    },
+    "section_label": "Etiqueta con corchetes en el color de acento sobre cada titular: '[ ABOUT US ]', '[ FILMOO SERVICES ]', '[ TESTIMONIALS ]'."
+  },
+
+  "page_structure_top_to_bottom": [
+    {
+      "n": 1, "name": "Hero a pantalla completa (100vh)",
+      "content": "Imagen de fondo cinematográfica (silueta tras un cristal). Fila 'Play Trailer' con icono de play circular; título enorme en naranja (SHADOW SCREAM); línea de créditos en mayúsculas; sinopsis en gris; píldoras con borde naranja (géneros); fila de logos de premios (laureles) a la derecha.",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 2, "name": "Sobre nosotros / cita del fundador",
+      "content": "Etiqueta '[ ABOUT US ]', cita enorme en dos tonos, firma 'Fundador & CEO', contador 'SINCE 1983' en cifra grande, botón outline 'More About Filmo ↗', imagen/vídeo con duración '1:32' en una esquina.",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 3, "name": "Ficha de una producción (serie)",
+      "content": "Foto con 'Play Trailer', título, logo de premio, sinopsis y lista de datos tipo ficha: Género / Creador / Reparto, en filas separadas por líneas finas.",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 4, "name": "Servicios (6 tarjetas)",
+      "content": "Etiqueta + titular 'OUR CINEMATIC EXPERTISE' + párrafo gris. Tarjetas: icono de línea naranja, título condensado en mayúsculas, descripción gris y 'Read More'. Fondo de tarjeta casi negro. Cada tarjeta lleva marcos decorativos en las 4 esquinas (líneas finas en forma de L, como visor de cámara).",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 5, "name": "Carrusel de pósters / proyectos",
+      "content": "Etiqueta '[ BY FILMOO STUDIO ]', titular grande 'SHAPING THE FUTURE OF ENTERTAINMENT SINCE 1983', párrafo, botón 'View All Film ↗' y un slider (Swiper) de pósters verticales con paginación en puntos (el activo en naranja).",
+      "widget": "card slider"
+    },
+    {
+      "n": 6, "name": "Declaración / manifiesto",
+      "content": "Texto enorme centrado en dos tonos ('We blend narrative mastery and technical precision…'), párrafo gris y una imagen. Debajo, lista de premios: laurel blanco + '[ 1X ]' en naranja + nombre del premio.",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 7, "name": "Llamada a la acción con texto giratorio",
+      "content": "'[ FILMOO ]' + 'BUILD YOUR CINEMATIC MOMENT WITH US' + botón outline 'Let's Work Together ↗'. Un círculo con texto que gira ('WATCH OUR SHOWREEL ·') con un botón de play en el centro.",
+      "animation": "fadeIn + rotateIn"
+    },
+    {
+      "n": 8, "name": "Contador gigante de premios",
+      "content": "Cifra '146+' enorme en letra contorneada sobre foto, rótulo 'WINNING AWARDS' y 3 botones cuadrados de redes sociales.",
+      "animation": "slideInLeft"
+    },
+    {
+      "n": 9, "name": "Testimonios",
+      "content": "'[ TESTIMONIALS ]', titular 'THEIR CINEMATIC EXPERIENCE', puntuación grande '4.8 /5' con estrellas naranja y 'Trusted by client worldwide'. Tarjetas oscuras con avatar redondo, nombre, cargo, icono de comillas naranja y cita en cursiva.",
+      "animation": "fadeIn + fadeInUp"
+    },
+    {
+      "n": 10, "name": "Blog 'Production Insights'",
+      "content": "Cuadrícula de entradas: foto, categoría pequeña, título en mayúsculas condensadas, autor y fecha con iconos.",
+      "animation": "fadeIn"
+    },
+    {
+      "n": 11, "name": "Carrusel de logos de clientes",
+      "content": "Fila de logos en blanco sobre negro, en movimiento (marquesina).",
+      "widget": "image carousel"
+    },
+    {
+      "n": 12, "name": "Pie de página",
+      "content": "Logo centrado, frase gigante 'LET'S WORK TOGETHER ↗', email en cursiva, teléfono en cifras grandes. Tres columnas con títulos naranja en mayúsculas condensadas (OUR PRODUCTION / QUICK LINKS / FILM NEWS) y enlaces con flecha ↗; bloque de boletín; botones de redes en cuadrados con borde; enlaces legales abajo separados por barras.",
+      "animation": "none"
+    }
+  ],
+
+  "header": {
+    "layout": "Transparente sobre el hero. Logo a la izquierda, menú central con desplegables (Home, About Us, Services, Projects, Pages…), a la derecha iconos pequeños y un botón naranja 'Contact us'.",
+    "mobile": "Logo + botón naranja cuadrado de hamburguesa."
+  },
+
+  "signature_effects_to_reuse": [
+    "Etiquetas con corchetes en el color de acento antes de cada titular.",
+    "Titulares de dos tonos (blanco/gris) en mayúsculas muy compactas.",
+    "Marcos en L en las esquinas de las tarjetas (efecto visor).",
+    "Cifras gigantes y contadores que suben al entrar en pantalla.",
+    "Texto circular que gira con un botón de play en el centro.",
+    "Flecha diagonal ↗ en todos los botones y enlaces.",
+    "Un único color de acento y fondo muy oscuro con grano.",
+    "Entradas suaves fadeIn / fadeInUp al hacer scroll; slider con puntos de paginación."
+  ],
+
+  "proposal_for_sculptology": {
+    "main_recommendation": "No copiar el aspecto 'cine naranja' (no encaja con una marca de estética y bienestar femenina). Sí aprovechar su estructura y sus efectos, aplicados a la paleta de Sculptology. Opción recomendada: modo 'lujo oscuro': fondo negro cálido con acento rosa y secciones crema para equilibrar.",
+    "palette_suggested": {
+      "background_dark": "#14100f",
+      "surface_dark": "#1e1715",
+      "accent": "#b85a69 (rosa de marca; versión más clara #e8b4bc para texto sobre negro)",
+      "light_sections": "#fbf8f4 (crema) alternando con las oscuras",
+      "text_on_dark": "#FFFFFF y #C4C4C4",
+      "keep": "Es la paleta ya usada en la web, así que se ve coherente con el logo y las fotos de Diana."
+    },
+    "fonts_suggested": {
+      "option_A_elegant_keep_current": "Playfair Display (titulares) + Jost (texto): ya está en la web y encaja con belleza/lujo.",
+      "option_B_closer_to_filmoo": "Alumni Sans (titulares condensados en mayúsculas) + DM Sans (botones) + Inter (texto). Más 'editorial moderno', pero menos femenino; probar solo en los números gigantes y las etiquetas."
+    },
+    "section_mapping": [
+      {"filmoo": "Hero con trailer", "sculptology": "Hero con el vídeo de Diana trabajando (el de Fascia Blasting) en bucle de fondo, título 'El arte de moldear tu cuerpo', botón 'Reserva tu cita' + 'Ver vídeo', píldoras con borde rosa: Fascia Blasting · Maderoterapia · Drenaje linfático."},
+      {"filmoo": "Cita del fundador + 'SINCE 1983'", "sculptology": "Cita de Diana en dos tonos + contador '20+ años de experiencia' en cifra grande y botón 'Conoce a Diana ↗'."},
+      {"filmoo": "Servicios con marcos en L", "sculptology": "Las 8 tarjetas de servicios actuales con marcos en L en las esquinas, icono de línea rosa y 'Ver tratamiento ↗'."},
+      {"filmoo": "Carrusel de pósters", "sculptology": "Carrusel de casos de antes y después (los collages de resultados), con puntos de paginación."},
+      {"filmoo": "Manifiesto + premios", "sculptology": "Frase grande de la marca + fila de 'por qué Sculptology' (20+ años, formación en EE. UU., bilingüe, atención VIP). Sin premios inventados."},
+      {"filmoo": "Texto giratorio 'Watch our showreel'", "sculptology": "Círculo giratorio 'RESERVA TU CITA · ' con flecha o icono en el centro, enlazado a Square."},
+      {"filmoo": "Contador '146+' + redes", "sculptology": "Cifra gigante '5.0' o '13 reseñas de 5 estrellas' + botón de Instagram."},
+      {"filmoo": "Testimonios", "sculptology": "Las 13 reseñas en un slider de tarjetas oscuras con comillas rosa; puntuación grande '5.0 /5'."},
+      {"filmoo": "Blog", "sculptology": "El blog actual, con etiqueta de categoría, título y fecha."},
+      {"filmoo": "Logos de clientes", "sculptology": "Omitir (no hay clientes corporativos) o usar una marquesina con los nombres de los tratamientos."},
+      {"filmoo": "Pie con 'LET'S WORK TOGETHER'", "sculptology": "Pie con frase gigante 'Tu mejor versión empieza aquí ↗', dirección, horario, Instagram y WhatsApp solo para dudas."}
+    ],
+    "implementation_in_current_stack": [
+      "Seguimos con HTML + CSS + JS estático generado por tools/build.py (no hace falta WordPress ni Elementor).",
+      "Etiquetas con corchetes y marcos en L: solo CSS (pseudo-elementos).",
+      "Contadores y entradas al hacer scroll: IntersectionObserver (ya hay un sistema de 'reveal').",
+      "Slider de casos y reseñas: Swiper (la misma librería que usa Filmoo) o CSS scroll-snap sin librería.",
+      "Texto circular giratorio: SVG con textPath + animación CSS.",
+      "Vídeo de fondo del hero: <video muted loop playsinline> con imagen de póster y pausa si el sistema pide menos movimiento.",
+      "Todo bilingüe (ES/EN) y primero móvil, como hasta ahora."
+    ],
+    "cautions": [
+      "Con fondo oscuro, las fotos de antes y después deben seguir viéndose con claridad: mantenerlas sobre tarjetas crema o con marco claro.",
+      "Texto gris sobre negro (#6D6D6D) tiene poco contraste: usar #C4C4C4 como mínimo para el texto de lectura.",
+      "No exagerar la animación: lo mismo que ya se hace con 'prefers-reduced-motion' (solo pausar el movimiento intrusivo).",
+      "Las cifras (20+ años, 5.0, 13 reseñas) deben ser reales y verificables."
+    ]
+  }
+}

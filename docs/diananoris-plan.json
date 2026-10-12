@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "site_reviewed": "https://www.diananoris.com",
+    "reviewed_on": "2026-10-12",
+    "platform_today": "Wix (generador Wix.com Website Builder)",
+    "design_reference": "docs/filmoo-style-brief.json (plantilla Filmoo, estética cinematográfica oscura)",
+    "verdict": "El estilo Filmoo encaja MUCHO mejor aquí (actriz / cineasta) que en Sculptology. Recomendación: usar Filmoo como referencia para diananoris.com y dejar Sculptology con su estilo elegante rosa y crema."
+  },
+
+  "current_site_audit": {
+    "identity": "Diana Noris: actriz puertorriqueña bilingüe, escritora, productora, directora y artista visual, afincada en Málaga. Fundadora de One Woman Show Films. Antes tuvo una galería de arte en Miami.",
+    "pages_and_content": {
+      "Home": "Cabecera con foto y logo en cursiva 'Diana Noris – Actress, Filmmaker and Artist', foto de retrato y biografía (basada en la mini-biografía de IMDb, firmada por Leo Samuel). Página muy corta (~1300 px).",
+      "Contact": "Representación teatral: The Wayne Agency, con teléfonos de VA, ATL y CA (EE. UU.). Mensajes 'Hello / Great to meet you'. Sin formulario.",
+      "Acting": "Pantalla con vídeo del reel, fotos fijas (600x338, 440x435, 373x175…) y una fila de logos 'As seen on'.",
+      "Portfolio": "Cinco headshots pequeños (236x315 px).",
+      "Commercial": "Vídeos comerciales ('Wayne Unchained', 'Behind the scenes', 'music video').",
+      "Press": "'Press Tour Clips' y 'Full Press Tour' (clips de vídeo).",
+      "One Woman Show Films": "Página casi vacía con una imagen.",
+      "A Latina in DC": "'Coming to festivals worldwide', imagen y vídeo (proyecto propio).",
+      "Development": "VACÍA (sin texto ni imágenes).",
+      "Artwork": "VACÍA (sin texto ni imágenes)."
+    },
+    "design_today": "Fondo gris oscuro (#222), tipografía del cuerpo Times New Roman 15 px, menú de 10 enlaces en una sola fila, mucho espacio vacío; muy básica.",
+    "problems": [
+      "Fotos de muy baja resolución (headshots de 236x315): no sirven para un diseño a pantalla completa.",
+      "Dos páginas del menú están vacías (Development, Artwork) y One Woman Show Films casi.",
+      "Enlaces sociales por defecto de Wix mal puestos: 'Twitter' va a wix.com, y 'Apple Music' y 'Amazon' van a las páginas genéricas de Apple y Amazon.",
+      "El menú tiene 10 elementos sin jerarquía; no hay botón claro de contacto ni de reel.",
+      "Texto casi todo en inglés; es una actriz bilingüe del mercado latino y no hay versión en español.",
+      "Contacto con agencia de EE. UU. mientras vive en España: conviene confirmar qué representación sigue vigente.",
+      "SEO muy flojo (títulos y descripciones genéricas), sin datos estructurados de persona/actriz."
+    ],
+    "social_profiles_found": {
+      "Instagram": "https://instagram.com/what_dianadid",
+      "YouTube": "https://youtube.com/user/diananoris",
+      "Facebook": "https://facebook.com/Diananoris"
+    }
+  },
+
+  "recommendation": {
+    "approach": "Rehacer la web como sitio estático (el mismo sistema que Sculptology: HTML, CSS y JS generados con Python, bilingüe EN/ES), en una carpeta aparte del repositorio, con el estilo cinematográfico de Filmoo. Sin WordPress.",
+    "why": [
+      "Es la única forma de conseguir el aspecto Filmoo con total control, rapidez y SEO, sin pagar la plantilla ni depender de Wix.",
+      "Ya tenemos el sistema, los componentes (reveal, slider, visor de fotos, vídeo) y el despliegue en Railway.",
+      "Se mantiene bilingüe: inglés como idioma principal (casting y festivales) y español para el mercado latino y España."
+    ],
+    "identity_and_style": {
+      "mood": "Cine independiente, femenino, cálido y con carácter. Fondo casi negro, mucha foto grande y titulares condensados en mayúsculas.",
+      "palette": {
+        "background": "#0A0A0A",
+        "cards": "#141414",
+        "text": "#FFFFFF y #C4C4C4",
+        "accent": "El rojo/rosa del logo de Diana (la 'N' de 'Noris'), en torno a #B8344A. Ver el logo real y sacar el tono exacto.",
+        "optional_second_accent": "Dorado suave solo para premios o laureles."
+      },
+      "fonts": {
+        "titles": "Alumni Sans (condensada, mayúsculas) como en Filmoo, o Bebas Neue.",
+        "signature_logo": "Mantener el logo manuscrito 'Diana Noris' (el de su portada actual) como firma en cabecera y pie.",
+        "body": "Inter o DM Sans; no Times."
+      },
+      "effects": [
+        "Etiquetas con corchetes: [ ACTING ], [ ONE WOMAN SHOW FILMS ].",
+        "Titulares de dos tonos blanco/gris.",
+        "Marcos en L en las tarjetas de proyectos.",
+        "Contador grande ('X películas', 'X años') solo con datos reales.",
+        "Círculo de texto giratorio 'WATCH THE REEL' con play en el centro.",
+        "Entradas suaves al hacer scroll; slider de proyectos; vídeo del reel como fondo del hero (en bucle y sin sonido)."
+      ]
+    },
+    "proposed_site_map": [
+      {"page": "Inicio", "content": "Hero a pantalla completa con el reel (o un trozo de 10–15 s) y el logo manuscrito; botón 'Watch reel'; etiquetas 'Actress · Writer · Producer · Director · Visual artist'; cita/biografía corta; proyectos destacados (A Latina in DC, One Woman Show Films); mini-galería de headshots; prensa; contacto."},
+      {"page": "Acting", "content": "Reel principal grande, escenas sueltas, headshots en alta, lista de créditos (con enlace al perfil de IMDb) y 'As seen on'."},
+      {"page": "Film / One Woman Show Films", "content": "La productora: misión, proyectos en desarrollo, A Latina in DC (póster, sinopsis, tráiler, estado: 'coming to festivals worldwide'), Development."},
+      {"page": "Press", "content": "Clips de la gira de prensa con miniaturas, entrevistas y apariciones con enlaces; 'Full Press Tour'."},
+      {"page": "Artwork", "content": "Galería de su arte mixto y 'whimsical art', con la historia de la galería de Miami. Si no hay fotos, no publicar la página."},
+      {"page": "Contact", "content": "Representación vigente + formulario/email, redes correctas (Instagram, YouTube, Facebook, IMDb). Versión en español para España y Latinoamérica."}
+    ],
+    "menu_simplified": ["Acting", "Film", "Press", "Artwork", "Contact", "[Botón] Watch reel", "[Bandera] EN / ES"]
+  },
+
+  "what_we_need_from_diana": [
+    "Fotos de alta resolución: 4–6 headshots y fotos de personaje, y retratos tipo editorial (mínimo 2000 px de lado).",
+    "El reel en el mejor archivo posible (MP4 original, no el de WhatsApp) y, si existe, un fragmento corto para el hero. Y/o los enlaces de YouTube/Vimeo.",
+    "Lista de créditos (cine, TV, teatro, comerciales) o el enlace de IMDb para confirmarlos.",
+    "Prensa: enlaces, recortes y vídeos de la gira de prensa.",
+    "Todo sobre A Latina in DC: póster, sinopsis, tráiler y estado.",
+    "Fotos de su arte (Artwork), si quiere mantener esa página.",
+    "Qué representación sigue vigente (The Wayne Agency u otra) y qué email/teléfono publicar.",
+    "Redes sociales correctas.",
+    "Permiso y derechos de todos los vídeos, clips de prensa y logos 'As seen on'."
+  ],
+
+  "seo_and_migration": [
+    "Datos estructurados Person (actress) con sameAs a IMDb, Instagram, YouTube y Facebook; y Organization para One Woman Show Films.",
+    "Títulos y descripciones propias por página, en inglés y español, con hreflang.",
+    "Mantener las direcciones antiguas con redirecciones 301 cuando se cambie el dominio (por ejemplo /reel-1 → /acting, /one-woman-show-films → /film), para no perder lo posicionado.",
+    "Vídeo con VideoObject; en la web, el reel con facade (miniatura que carga el vídeo al pulsar) para que la página cargue rápido.",
+    "Cambiar el dominio diananoris.com del Wix al nuevo hosting solo cuando Diana apruebe la versión nueva."
+  ],
+
+  "work_plan": [
+    "Fase 1 (cuando haya material): prototipo de la portada con el estilo Filmoo, sin tocar el dominio.",
+    "Fase 2: resto de páginas, versión en español, SEO y formulario de contacto.",
+    "Fase 3: revisión con Diana, correcciones, migración del dominio y redirecciones."
+  ],
+
+  "risks_and_cautions": [
+    "Filmoo es una plantilla de pago: solo se usa como inspiración de estilo; no se copian su código, imágenes ni textos.",
+    "Sin fotos nuevas en alta resolución, el diseño oscuro y grande se vería pobre: el material es el cuello de botella.",
+    "Cada identidad con su estilo: Sculptology (estética y bienestar, rosa y crema) y diananoris.com (actriz, cinematográfico oscuro) deben ser dos webs separadas, con un enlace discreto entre ellas si Diana quiere.",
+    "No inventar premios, créditos ni cifras: todo dato mostrado debe estar confirmado por Diana."
+  ]
+}
