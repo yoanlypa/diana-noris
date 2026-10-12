@@ -263,3 +263,7 @@ h1,h2,h3,p{margin:0}
 .home .header:not(.solid) .logo{opacity:0;pointer-events:none}
 .logo{transition:opacity .35s}
 .hero-media img{height:auto}
+
+/* pie: el logo mantiene su tipografía manuscrita */
+.f-grid a.logo{font-family:var(--f-script);font-weight:400;font-size:46px;display:inline-block;color:#fff}
+.f-grid a.logo:hover{color:#fff}
