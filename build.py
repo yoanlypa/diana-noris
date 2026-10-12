@@ -114,7 +114,7 @@ def header(lang, page, solid):
     flags = (f'<a href="{path("en", page)}" hreflang="en" lang="en" title="English" aria-label="English"{cur("en")}>{FLAG_EN}</a>'
              f'<a href="{path("es", page)}" hreflang="es" lang="es" title="Español" aria-label="Español"{cur("es")}>{FLAG_ES}</a>')
     reel = path(lang, "acting") + "#reel"
-    return f'''<body>
+    return f'''<body{' class="home"' if page == 'home' else ''}>
 <a class="skip" href="#main">{u["skip"]}</a>
 <header class="header{" solid" if solid else ""}"{" data-solid" if solid else ""}>
   <div class="wrap">
