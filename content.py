@@ -81,7 +81,7 @@ UI = {
         "nav": {"acting": "Acting", "film": "Film", "press": "Press", "artwork": "Artwork", "contact": "Contact"},
         "watch": "Watch reel", "contact_btn": "Contact", "home": "Home",
         "roles": "Actress · Filmmaker · Artist",
-        "pills": ["Bilingual EN / ES", "Puerto Rican", "Málaga · Madrid · London"],
+        "pills": ["Bilingual EN / ES", "Málaga · Madrid · London"],
         "read_more": "Learn more", "view": "View",
         "footer_cta": "Let's work together", "footer_sub": "Acting · Film · Collaborations",
         "rights": "All rights reserved.", "follow": "Follow", "explore": "Explore", "reach": "Contact",
@@ -93,7 +93,7 @@ UI = {
         "nav": {"acting": "Actuación", "film": "Cine", "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
         "watch": "Ver reel", "contact_btn": "Contacto", "home": "Inicio",
         "roles": "Actriz · Filmmaker · Artista",
-        "pills": ["Bilingüe ES / EN", "Puertorriqueña", "Málaga · Madrid · Londres"],
+        "pills": ["Bilingüe ES / EN", "Málaga · Madrid · Londres"],
         "read_more": "Saber más", "view": "Ver",
         "footer_cta": "Trabajemos juntos", "footer_sub": "Actuación · Cine · Colaboraciones",
         "rights": "Todos los derechos reservados.", "follow": "Sígueme", "explore": "Explorar", "reach": "Contacto",
@@ -106,7 +106,7 @@ UI = {
 SEO = {
     "en": {
         "home": ("Diana Noris | Actress, Filmmaker & Visual Artist in Málaga",
-                 "Diana Noris is a bilingual Puerto Rican actress, writer, producer and filmmaker based in Málaga, Spain, and founder of One Woman Show Films."),
+                 "Diana Noris is a bilingual actress, filmmaker and visual artist based in Málaga, Spain, and founder of One Woman Show Films."),
         "acting": ("Acting | Diana Noris – Bilingual Actress (English / Spanish)",
                    "Reel, headshots and casting profile of Diana Noris, a bilingual (English/Spanish) actress working on Spanish and European productions."),
         "film": ("Film | One Woman Show Films & A Latina in DC – Diana Noris",
@@ -117,7 +117,7 @@ SEO = {
     },
     "es": {
         "home": ("Diana Noris | Actriz, cineasta y artista visual en Málaga",
-                 "Diana Noris es una actriz, guionista, productora y cineasta puertorriqueña y bilingüe afincada en Málaga, y fundadora de One Woman Show Films."),
+                 "Diana Noris es una actriz bilingüe, filmmaker y artista visual afincada en Málaga, España, y fundadora de One Woman Show Films."),
         "acting": ("Actuación | Diana Noris – Actriz bilingüe (español / inglés)",
                    "Reel, fotos de actriz y ficha de casting de Diana Noris, actriz bilingüe (español/inglés) que trabaja en producciones españolas y europeas."),
         "film": ("Cine | One Woman Show Films y A Latina in DC – Diana Noris",
@@ -130,6 +130,7 @@ SEO = {
 
 HOME = {
     "en": {
+        "hero_lead": "Bilingual actress, filmmaker and artist based in Málaga, Spain, and founder of One Woman Show Films.",
         "about_k": "About Diana",
         "about_h1": "A bilingual actress, writer and filmmaker",
         "about_h2": "telling bold stories from Málaga to Madrid and London",
@@ -160,6 +161,7 @@ HOME = {
         "cta_p": "Currently working between Málaga, Madrid and London. For acting, collaborations and press inquiries, please contact representation or reach out on social media.",
     },
     "es": {
+        "hero_lead": "Actriz bilingüe, filmmaker y artista afincada en Málaga, España, y fundadora de One Woman Show Films.",
         "about_k": "Sobre Diana",
         "about_h1": "Una actriz, guionista y cineasta bilingüe",
         "about_h2": "que cuenta historias valientes de Málaga a Madrid y Londres",
@@ -287,3 +289,18 @@ CONTACT = {
            "base": "Málaga, España. Trabaja entre Málaga, Madrid y Londres.",
            "note": "Encantada de conocerte. ¡Gracias!"},
 }
+
+
+# --------------------------------------------------------------- headshots propios (alojados en site/assets/img/headshots/)
+# (nombre del archivo, número del archivo original, textos alternativos). Se generan con process_headshots.py
+HEADSHOTS = [
+    ("hs-01", 16, {"en": "Diana Noris headshot in a burgundy leather jacket", "es": "Diana Noris, foto de actriz con chaqueta de cuero burdeos"}),
+    ("hs-02", 14, {"en": "Diana Noris headshot in a black leather jacket and mustard turtleneck", "es": "Diana Noris, foto de actriz con chaqueta de cuero negra y cuello alto mostaza"}),
+    ("hs-03", 15, {"en": "Diana Noris headshot in a black blazer and white top", "es": "Diana Noris, foto de actriz con blazer negro y top blanco"}),
+    ("hs-04", 13, {"en": "Diana Noris smiling in a SAG-AFTRA t-shirt", "es": "Diana Noris sonriendo con una camiseta de SAG-AFTRA"}),
+    ("hs-05", 17, {"en": "Diana Noris headshot in a grey tank top on a dark blue background", "es": "Diana Noris, foto de actriz con camiseta gris sobre fondo azul oscuro"}),
+    ("hs-06", 19, {"en": "Diana Noris headshot in a white shirt", "es": "Diana Noris, foto de actriz con camisa blanca"}),
+    ("hs-07", 21, {"en": "Diana Noris winking in a SAG-AFTRA t-shirt", "es": "Diana Noris guiñando un ojo con una camiseta de SAG-AFTRA"}),
+    ("hs-08", 18, {"en": "Diana Noris headshot with her hand on her chin", "es": "Diana Noris, foto de actriz con la mano en la barbilla"}),
+    ("hs-09", 20, {"en": "Diana Noris headshot in a black blazer, three-quarter view", "es": "Diana Noris, foto de actriz con blazer negro, de tres cuartos"}),
+]

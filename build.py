@@ -67,6 +67,24 @@ def crumbs(lang, label):
     return f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{path(lang, "home")}">{UI[lang]["home"]}</a><span>/</span>{label}</nav>'
 
 
+# ---------------------------------------------------------------- headshots propios (archivos locales)
+HS_URL = "/assets/img/headshots/"
+HS_SIZES = json.loads((SITE / "assets" / "img" / "headshots" / "sizes.json").read_text(encoding="utf-8"))
+
+
+def hs_img(stem, lang, sizes, alt_override=None):
+    w, h, tw, th = HS_SIZES[stem]
+    alt = alt_override or next(a[lang] for s, _n, a in C.HEADSHOTS if s == stem)
+    return (f'<img src="{HS_URL}{stem}-640.webp" srcset="{HS_URL}{stem}-640.webp {tw}w, {HS_URL}{stem}.webp {w}w" sizes="{sizes}" '
+            f'alt="{esc(alt)}" width="{tw}" height="{th}" loading="lazy" decoding="async">')
+
+
+def hs_tile(stem, lang, sizes, n):
+    alt = next(a[lang] for s, _n, a in C.HEADSHOTS if s == stem)
+    return (f'<button class="tile" type="button" data-cap="{esc(alt)}" data-full="{HS_URL}{stem}.webp" aria-label="{esc(alt)}">'
+            f'{hs_img(stem, lang, sizes)}</button>')
+
+
 # ---------------------------------------------------------------- piezas comunes
 def head(lang, page, ld, og_key="banner", solid_title=None):
     title, desc = C.SEO[lang][page]
@@ -186,7 +204,7 @@ def person_ld():
         "@context": "https://schema.org", "@type": "Person", "@id": DOMAIN + "/#person",
         "name": "Diana Noris", "alternateName": "Diana Noris Smith",
         "jobTitle": ["Actress", "Filmmaker", "Producer", "Screenwriter", "Visual artist"],
-        "description": C.SEO["en"]["home"][1], "url": DOMAIN + "/", "image": img(MEDIA["portrait"], 1200),
+        "description": C.SEO["en"]["home"][1], "url": DOMAIN + "/", "image": DOMAIN + "/assets/img/headshots/hs-01.webp",
         "knowsLanguage": ["en", "es"], "homeLocation": {"@type": "Place", "name": "Málaga, Spain"},
         "sameAs": [u for _, u in C.SOCIALS], "founder": {"@id": DOMAIN + "/#owsf"},
     }
@@ -207,7 +225,7 @@ def breadcrumb_ld(lang, page, name):
 def build_home(lang):
     u, h = UI[lang], C.HOME[lang]
     banner_m = MEDIA["banner"]
-    hero_img = (f'<picture><source media="(max-width:900px)" srcset="{img(MEDIA["hs4"], 900)}">'
+    hero_img = (f'<picture><source media="(max-width:900px)" srcset="{HS_URL}hs-02.webp">'
                 f'<img src="{img(banner_m, 1942)}" srcset="{img(banner_m, 1200)} 1200w, {img(banner_m, 1942)} 1942w" sizes="100vw" '
                 f'alt="Diana Noris, actress, filmmaker and artist" width="1942" height="805" fetchpriority="high" decoding="async"></picture>')
     facts = "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in h["facts"])
@@ -217,8 +235,8 @@ def build_home(lang):
         f'<span class="link-arrow">{u["read_more"]} {ARROW}</span></a>'
         for i, (ic, t, d, pg) in enumerate(h["disc"]))
     slides = "".join(
-        f'<div class="slide frame">{tile(k, [400, 600, 900], "300px", f"Diana Noris headshot {n}", f"Diana Noris – {h["port_k"]} {n}")}</div>'
-        for n, k in enumerate(["hs1", "hs2", "hs4", "hs5", "portrait"], 1))
+        f'<div class="slide frame">{hs_tile(stem, lang, "300px", n)}</div>'
+        for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
     ring = "WATCH THE REEL • WATCH THE REEL • WATCH THE REEL • " if lang == "en" else "VER EL REEL • VER EL REEL • VER EL REEL • VER EL REEL • "
     reel = path(lang, "acting") + "#reel"
     press = "".join(
@@ -232,14 +250,14 @@ def build_home(lang):
   <div class="wrap hero-body">
     <span class="label">{u["roles"]}</span>
     <h1 class="display d-xl"><span class="sr-only">Diana Noris – </span>{two_tone("Bold, character-driven", "stories") if lang == "en" else two_tone("Historias valientes", "centradas en personajes")}</h1>
-    <p class="lead">{C.SEO[lang]["home"][1]}</p>
+    <p class="lead">{h["hero_lead"]}</p>
     <div class="btn-row"><a class="btn" href="{reel}">{u["watch"]} {ARROW}</a><a class="btn outline" href="{path(lang, "contact")}">{u["contact_btn"]}</a></div>
     <div class="pills">{"".join(f"<span>{x}</span>" for x in u["pills"])}</div>
   </div>
 </section>
 
 <section class="sec" id="about"><div class="wrap about-grid">
-  <div class="portrait frame reveal">{pic("portrait", [500, 800, 1100], "(max-width:900px) 100vw, 480px", "Diana Noris portrait", w=869, h=1086)}</div>
+  <div class="portrait frame reveal">{hs_img("hs-01", lang, "(max-width:900px) 100vw, 480px")}</div>
   <div class="about-text reveal" style="--d:.1s">
     <span class="label">{h["about_k"]}</span>
     <h2 class="display d-lg">{two_tone(h["about_h1"], h["about_h2"])}</h2>
@@ -299,8 +317,8 @@ def build_acting(lang):
     cast = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in a["cast"])
     credits = "".join(f"<li><span>{t}</span></li>" for t in a["credits"])
     srcs = "".join(f'<source src="{s}" type="video/mp4">' for s in C.REEL_SOURCES)
-    hs = "".join(f'<div class="frame">{tile(k, [400, 600, 900], "(max-width:640px) 45vw, 220px", f"Diana Noris headshot {n}", f"Diana Noris – headshot {n}")}</div>'
-                 for n, k in enumerate(["hs1", "hs2", "hs4", "hs5", "portrait"], 1))
+    hs = "".join(f'<div class="frame">{hs_tile(stem, lang, "(max-width:640px) 90vw, 400px", n)}</div>'
+                 for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
     stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="16/10")}</div>'
                      for n, k in enumerate(["still1", "still2", "still3"], 1))
     comm = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 500px", "Shoe campaign", "Shoe campaign")}</div>' for k in ("shoe1", "shoe2"))
@@ -326,7 +344,7 @@ def build_acting(lang):
 
 <section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["hs_k"]}</span><h2 class="display d-lg">{two_tone(a["hs_h"], "")}</h2></div>
-  <div class="grid-5 reveal" data-gallery>{hs}</div>
+  <div class="grid-3 hs-grid reveal" data-gallery>{hs}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">

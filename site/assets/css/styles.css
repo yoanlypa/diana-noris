@@ -274,3 +274,4 @@ h1,h2,h3,p{margin:0}
 .credits li::before{color:#d6d6d6}
 .btn.outline{border-color:var(--accent-l)}
 .btn.outline:hover{border-color:var(--accent)}
+@media (max-width:640px){.hs-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px}}
