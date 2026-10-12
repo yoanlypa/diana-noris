@@ -81,7 +81,7 @@ UI = {
         "nav": {"acting": "Acting", "film": "Film", "press": "Press", "artwork": "Artwork", "contact": "Contact"},
         "watch": "Watch reel", "contact_btn": "Contact", "home": "Home",
         "roles": "Actress · Filmmaker · Artist",
-        "pills": ["Bilingual EN / ES", "Málaga · Madrid · London"],
+        "pills": ["Bilingual EN / ES", "Spain · New York"],
         "read_more": "Learn more", "view": "View",
         "footer_cta": "Let's work together", "footer_sub": "Acting · Film · Collaborations",
         "rights": "All rights reserved.", "follow": "Follow", "explore": "Explore", "reach": "Contact",
@@ -93,7 +93,7 @@ UI = {
         "nav": {"acting": "Actuación", "film": "Cine", "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
         "watch": "Ver reel", "contact_btn": "Contacto", "home": "Inicio",
         "roles": "Actriz · Filmmaker · Artista",
-        "pills": ["Bilingüe ES / EN", "Málaga · Madrid · Londres"],
+        "pills": ["Bilingüe ES / EN", "España · Nueva York"],
         "read_more": "Saber más", "view": "Ver",
         "footer_cta": "Trabajemos juntos", "footer_sub": "Actuación · Cine · Colaboraciones",
         "rights": "Todos los derechos reservados.", "follow": "Sígueme", "explore": "Explorar", "reach": "Contacto",
@@ -130,7 +130,8 @@ SEO = {
 
 HOME = {
     "en": {
-        "hero_lead": "Bilingual actress, filmmaker and artist based in Málaga, Spain, and founder of One Woman Show Films.",
+        "hero_h1": ("Bilingual storyteller", "across cultures"),
+        "hero_lead": "Actress, filmmaker and artist working between Spain and New York, creating stories that connect across cultures.",
         "about_k": "About Diana",
         "about_h1": "A bilingual actress, writer and filmmaker",
         "about_h2": "telling bold stories from Málaga to Madrid and London",
@@ -161,7 +162,8 @@ HOME = {
         "cta_p": "Currently working between Málaga, Madrid and London. For acting, collaborations and press inquiries, please contact representation or reach out on social media.",
     },
     "es": {
-        "hero_lead": "Actriz bilingüe, filmmaker y artista afincada en Málaga, España, y fundadora de One Woman Show Films.",
+        "hero_h1": ("Narradora bilingüe", "entre culturas"),
+        "hero_lead": "Actriz, filmmaker y artista que trabaja entre España y Nueva York, creando historias que conectan culturas.",
         "about_k": "Sobre Diana",
         "about_h1": "Una actriz, guionista y cineasta bilingüe",
         "about_h2": "que cuenta historias valientes de Málaga a Madrid y Londres",

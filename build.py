@@ -249,7 +249,7 @@ def build_home(lang):
   <div class="hero-media">{hero_img}</div>
   <div class="wrap hero-body">
     <span class="label">{u["roles"]}</span>
-    <h1 class="display d-xl"><span class="sr-only">Diana Noris – </span>{two_tone("Bold, character-driven", "stories") if lang == "en" else two_tone("Historias valientes", "centradas en personajes")}</h1>
+    <h1 class="display d-hero"><span class="sr-only">Diana Noris – </span>{two_tone(*h["hero_h1"])}</h1>
     <p class="lead">{h["hero_lead"]}</p>
     <div class="btn-row"><a class="btn" href="{reel}">{u["watch"]} {ARROW}</a><a class="btn outline" href="{path(lang, "contact")}">{u["contact_btn"]}</a></div>
     <div class="pills">{"".join(f"<span>{x}</span>" for x in u["pills"])}</div>
