@@ -449,7 +449,7 @@ def build_contact(lang):
 def write_support():
     (SITE / "assets" / "img").mkdir(parents=True, exist_ok=True)
     (SITE / "assets" / "img" / "favicon.svg").write_text(
-        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0a0a0a"/><text x="32" y="46" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#e5546f" text-anchor="middle">D</text></svg>', encoding="utf-8")
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#0a0a0a"/><text x="32" y="46" font-family="Georgia,serif" font-style="italic" font-size="40" fill="#c0364f" text-anchor="middle">D</text></svg>', encoding="utf-8")
     if C.DEMO:
         (SITE / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
     else:
