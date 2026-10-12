@@ -160,7 +160,7 @@ def footer(lang):
       <div><h4>{u["explore"]}</h4><ul>{explore}</ul></div>
       <div><h4>{u["follow"]}</h4><ul>{soc}</ul></div>
     </div>
-    <div class="f-bottom"><span>© 2026 Diana Noris · {u["rights"]}{demo}</span><span>Málaga · Madrid · London</span></div>
+    <div class="f-bottom"><span>© 2026 Diana Noris · {u["rights"]}{demo}</span><span>Spain · New York</span></div>
   </div>
 </footer>
 
@@ -205,7 +205,7 @@ def person_ld():
         "name": "Diana Noris", "alternateName": "Diana Noris Smith",
         "jobTitle": ["Actress", "Filmmaker", "Producer", "Screenwriter", "Visual artist"],
         "description": C.SEO["en"]["home"][1], "url": DOMAIN + "/", "image": DOMAIN + "/assets/img/headshots/hs-01.webp",
-        "knowsLanguage": ["en", "es"], "homeLocation": {"@type": "Place", "name": "Málaga, Spain"},
+        "knowsLanguage": ["en", "es"], "workLocation": [{"@type": "Country", "name": "Spain"}, {"@type": "City", "name": "New York"}],
         "sameAs": [u for _, u in C.SOCIALS], "founder": {"@id": DOMAIN + "/#owsf"},
     }
 
