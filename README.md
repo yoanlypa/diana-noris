@@ -21,7 +21,7 @@ Genera las 12 páginas en `site/`. El diseño está en `site/assets/css/styles.c
 - **Imágenes y vídeo**: se enlazan desde el Wix actual de Diana (`static.wixstatic.com`, `video.wixstatic.com`) para poder enseñar la demo sin copiar archivos. Para producción hay que descargar/recibir los originales en alta resolución y alojarlos en `site/assets/img/`. Si se borra el Wix, dejarían de verse.
 - **No se indexa**: `DEMO = True` en `content.py` añade `noindex` y un `robots.txt` que bloquea todo. Poner `False` el día de publicar.
 - **Textos**: salen de su web actual, su ficha de casting y su biografía. La traducción al español es propia: debe revisarla Diana.
-- **Datos que hay que confirmar** (marcados con `# TODO Diana` en `content.py`): enlace directo a su IMDb, representación vigente (The Wayne Agency es de EE. UU.), créditos (ahora solo los 4 títulos de su tarjeta de IMDb, sin papeles), si se publican medidas de casting (solo altura, ojos y pelo), y que no haya datos de contacto que ya no valgan.
+- **Datos que hay que confirmar** (marcados con `# TODO Diana` en `content.py`): representación vigente (The Wayne Agency es de EE. UU.), créditos (ahora solo los 4 títulos de su tarjeta de IMDb, sin papeles), si se publican medidas de casting (solo altura, ojos y pelo), y que no haya datos de contacto que ya no valgan.
 - **Páginas con poco material**: Artwork (sin fotos, muestra "Galería próximamente") y la sección de proyectos en desarrollo de Film.
 
 ## Publicar

@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import content as C  # noqa: E402
-from content import UI, MEDIA, img, path, DOMAIN  # noqa: E402
+from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
 V = "20261012"
@@ -28,6 +28,7 @@ def icon(name):
     return f'<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[name]}</svg>'
 
 
+INSTAGRAM_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg>'
 FLAG_ES = '<svg viewBox="0 0 60 60" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="60" fill="#c60b1e"/><rect y="15" width="60" height="30" fill="#ffc400"/></svg>'
 FLAG_EN = '<svg viewBox="0 0 60 60" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="60" fill="#012169"/><path d="M0 0 60 60M60 0 0 60" stroke="#fff" stroke-width="11"/><path d="M0 0 60 60M60 0 0 60" stroke="#c8102e" stroke-width="4"/><path d="M30 0v60M0 30h60" stroke="#fff" stroke-width="18"/><path d="M30 0v60M0 30h60" stroke="#c8102e" stroke-width="10"/></svg>'
 
@@ -83,6 +84,38 @@ def hs_tile(stem, lang, sizes, n):
     alt = next(a[lang] for s, _n, a in C.HEADSHOTS if s == stem)
     return (f'<button class="tile" type="button" data-cap="{esc(alt)}" data-full="{HS_URL}{stem}.webp" aria-label="{esc(alt)}">'
             f'{hs_img(stem, lang, sizes)}</button>')
+
+
+# ---------------------------------------------------------------- vídeos de YouTube (carga el reproductor al pulsar)
+def fmt_dur(sec):
+    return f"{sec // 60}:{sec % 60:02d}"
+
+
+def iso_dur(sec):
+    return f"PT{sec // 60}M{sec % 60}S"
+
+
+def yt_block(key, lang):
+    v = C.VIDEOS[key]
+    title = esc(v["title"][lang])
+    vid = v["id"]
+    hq = "https://i.ytimg.com/vi/" + vid + "/hqdefault.jpg"
+    onerr = "this.onerror=null;this.src='" + hq + "'"
+    onload = "if(this.naturalWidth<300){this.onload=null;this.src='" + hq + "'}"
+    return (
+        '<div class="video"><a class="yt" href="https://www.youtube.com/watch?v=' + vid + '" target="_blank" rel="noopener" '
+        'data-yt="' + vid + '" data-title="' + title + '" aria-label="' + title + '">'
+        '<img src="https://i.ytimg.com/vi/' + vid + '/maxresdefault.jpg" alt="' + title + '" loading="lazy" decoding="async" onerror="' + onerr + '" onload="' + onload + '">'
+        '<span class="yt-play" aria-hidden="true">' + PLAY + '</span>'
+        '<span class="yt-cap">' + title + ' · ' + fmt_dur(v["seconds"]) + '</span></a></div>')
+
+
+def video_ld(key, lang):
+    v = C.VIDEOS[key]
+    return {"@context": "https://schema.org", "@type": "VideoObject", "name": f"Diana Noris – {v['title'][lang]}",
+            "description": f"Diana Noris – {v['title'][lang]}", "thumbnailUrl": [f"https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg"],
+            "uploadDate": v["date"], "duration": iso_dur(v["seconds"]), "embedUrl": f"https://www.youtube.com/embed/{v['id']}",
+            "inLanguage": "es" if "es" in key or key == "theatre" else "en"}
 
 
 # ---------------------------------------------------------------- piezas comunes
@@ -316,19 +349,20 @@ def build_acting(lang):
     u, a = UI[lang], C.ACTING[lang]
     cast = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in a["cast"])
     credits = "".join(f"<li><span>{t}</span></li>" for t in a["credits"])
-    srcs = "".join(f'<source src="{s}" type="video/mp4">' for s in C.REEL_SOURCES)
     hs = "".join(f'<div class="frame">{hs_tile(stem, lang, "(max-width:640px) 90vw, 400px", n)}</div>'
                  for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
     stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="16/10")}</div>'
                      for n, k in enumerate(["still1", "still2", "still3"], 1))
     comm = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 500px", "Shoe campaign", "Shoe campaign")}</div>' for k in ("shoe1", "shoe2"))
-    html = head(lang, "acting", [person_ld(), breadcrumb_ld(lang, "acting", u["nav"]["acting"])], og_key="reelcover") + header(lang, "acting", True) + f'''
+    html = head(lang, "acting", [person_ld(), breadcrumb_ld(lang, "acting", u["nav"]["acting"])] + [video_ld(k, lang) for k in C.VIDEOS], og_key="reelcover") + header(lang, "acting", True) + f'''
 <main id="main">
 {p_hero(lang, "acting", a["k"], a["h1"], a["h2"], a["lead"])}
 
 <section class="sec" id="reel"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["reel_k"]}</span><h2 class="display d-lg">{two_tone(a["reel_h"], "")}</h2></div>
-  <div class="frame reveal"><div class="video"><video controls playsinline preload="none" poster="{img(MEDIA["reelcover"], 1200)}" aria-label="{esc(a["reel_note"])}">{srcs}</video></div></div>
+  <div class="frame reveal">{yt_block(C.FEATURED[lang], lang)}</div>
+  <span class="label reveal" style="margin:64px 0 24px">{C.MORE_LABEL[lang]}</span>
+  <div class="grid-2 reveal">{"".join(f'<div class="frame">{yt_block(k, lang)}</div>' for k in C.MORE[lang])}</div>
 </div></section>
 
 <section class="sec alt"><div class="wrap">
@@ -336,10 +370,20 @@ def build_acting(lang):
   <dl class="cast reveal">{cast}</dl>
 </div></section>
 
-<section class="sec"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{a["credits_k"]}</span><h2 class="display d-lg">{two_tone(a["credits_h"], "")}</h2><p class="lead" style="margin-top:20px">{a["credits_p"]}</p></div>
-  <ol class="credits reveal">{credits}</ol>
-  <a class="btn outline reveal" href="{C.IMDB}" target="_blank" rel="noopener me">{a["imdb"]} {ARROW}</a>
+<section class="sec"><div class="wrap credits-grid">
+  <div>
+    <div class="sec-head reveal"><span class="label">{a["credits_k"]}</span><h2 class="display d-lg">{two_tone(a["credits_h"], "")}</h2><p class="lead" style="margin-top:20px">{a["credits_p"]}</p></div>
+    <ol class="credits reveal">{credits}</ol>
+  </div>
+  <div class="imdb-col reveal" style="--d:.1s">
+    <a class="imdb-card frame" href="{C.IMDB}" target="_blank" rel="noopener me" aria-label="Diana Noris Smith – IMDb">
+      <img src="{img(MEDIA["imdbcard"], 680)}" alt="Diana Noris Smith, actress, producer and screenwriter – IMDb Pro card" width="680" height="784" loading="lazy" decoding="async"></a>
+    <div class="logo-row">
+      <a href="{C.IMDB}" target="_blank" rel="noopener me" aria-label="IMDb"><img src="{img_png(MEDIA["logo_imdb"], 300)}" alt="IMDb" height="40" loading="lazy" decoding="async"></a>
+      <a href="{C.ACTORS_ACCESS}" target="_blank" rel="noopener me" aria-label="Actors Access"><img src="{img_png(MEDIA["logo_aa"], 300)}" alt="Actors Access" height="44" loading="lazy" decoding="async"></a>
+      <a class="ig" href="{C.INSTAGRAM}" target="_blank" rel="noopener me" aria-label="Instagram">{INSTAGRAM_SVG}</a>
+    </div>
+  </div>
 </div></section>
 
 <section class="sec alt"><div class="wrap">

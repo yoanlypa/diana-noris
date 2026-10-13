@@ -47,6 +47,22 @@
     });
   }, "slider");
 
+  /* vídeos de YouTube: el reproductor (sin cookies) se carga solo al pulsar */
+  safe(function () {
+    $$(".yt").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return; // permite abrir en pestaña nueva
+        e.preventDefault();
+        var f = doc.createElement("iframe");
+        f.src = "https://www.youtube-nocookie.com/embed/" + a.getAttribute("data-yt") + "?autoplay=1&rel=0&modestbranding=1";
+        f.title = a.getAttribute("data-title") || "Video";
+        f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share";
+        f.setAttribute("allowfullscreen", "");
+        a.replaceWith(f);
+      });
+    });
+  }, "youtube");
+
   /* visor de fotos (agrupa por [data-gallery]) */
   safe(function () {
     var lb = $(".lightbox"); if (!lb) return;

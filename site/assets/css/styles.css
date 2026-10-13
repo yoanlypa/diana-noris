@@ -279,3 +279,26 @@ h1,h2,h3,p{margin:0}
 /* titular de la portada: más largo, dos líneas en escritorio */
 .d-hero{font-size:clamp(48px,8vw,118px)}
 .hero h1{max-width:22ch}
+
+/* ---------- vídeos de YouTube (miniatura + play; el reproductor se carga al pulsar) ---------- */
+.yt{position:absolute;inset:0;display:block;background:#000;color:#fff;text-decoration:none}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .4s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.yt:hover img,.yt:focus-visible img{opacity:1;transform:scale(1.03)}
+.yt-play{position:absolute;left:50%;top:50%;width:clamp(64px,9vw,96px);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:var(--accent);display:grid;place-items:center;transition:transform .3s;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.yt-play svg{width:38%;height:38%;fill:#fff;margin-left:6%}
+.yt:hover .yt-play,.yt:focus-visible .yt-play{transform:translate(-50%,-50%) scale(1.1)}
+.yt-cap{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 16px;background:linear-gradient(transparent,rgba(0,0,0,.88));font-family:var(--f-ui);font-weight:500;font-size:15px;letter-spacing:.04em}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---------- IMDb: tarjeta + logos (IMDb, Actors Access, Instagram) ---------- */
+.credits-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(40px,6vw,90px);align-items:start}
+.imdb-col{max-width:380px;justify-self:end;width:100%}
+.imdb-card{display:block}
+.imdb-card img{width:100%;height:auto;border-radius:6px;display:block}
+.logo-row{display:flex;align-items:center;gap:30px;margin-top:26px;flex-wrap:wrap}
+.logo-row a{display:inline-flex;align-items:center;opacity:.9;transition:opacity .3s,transform .3s}
+.logo-row a:hover,.logo-row a:focus-visible{opacity:1;transform:translateY(-3px)}
+.logo-row img{height:38px;width:auto;display:block}
+.logo-row a.ig{color:#b8a58f}
+.logo-row a.ig svg{width:42px;height:42px}
+@media (max-width:900px){.credits-grid{grid-template-columns:minmax(0,1fr)}.imdb-col{justify-self:start;max-width:360px}}

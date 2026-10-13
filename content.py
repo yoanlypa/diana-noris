@@ -12,11 +12,17 @@ DEMO = True  # True -> la demo no se indexa (noindex). Poner False al publicar l
 INSTAGRAM = "https://www.instagram.com/what_dianadid"
 YOUTUBE = "https://www.youtube.com/user/diananoris"
 FACEBOOK = "https://www.facebook.com/Diananoris"
-IMDB = "https://www.imdb.com/find/?q=Diana%20Noris%20Smith"  # TODO Diana: enlace directo a su perfil de IMDb
-SOCIALS = [("Instagram", INSTAGRAM), ("YouTube", YOUTUBE), ("Facebook", FACEBOOK), ("IMDb", IMDB)]
+IMDB = "https://www.imdb.com/name/nm4434619/"
+ACTORS_ACCESS = "https://resumes.actorsaccess.com/Diananoris"
+SOCIALS = [("Instagram", INSTAGRAM), ("YouTube", YOUTUBE), ("Facebook", FACEBOOK), ("IMDb", IMDB), ("Actors Access", ACTORS_ACCESS)]
 
 # --------------------------------------------------------------- imágenes (Wix, prefijo 761d7f_)
 WIX = "https://static.wixstatic.com/media/761d7f_"
+
+
+def img_png(media_id, w):
+    """Igual que img() pero conserva la transparencia (para logos)."""
+    return f"{WIX}{media_id}/v1/fit/w_{w},h_{w},al_c,q_90,enc_auto/logo.png"
 
 
 def img(media_id, w, h=None, mode="fit", q=82):
@@ -45,6 +51,9 @@ MEDIA = {
     "mags": "a1249fbba62f4d8ca08b9976cef40cbc~mv2.png",
     "seenon": "6f28c3729b2e47128cefef2315e9bfc3~mv2.jpg",
     "owsf": "f3bfc64ee5ec4246be75e8de65f106a2~mv2.png",
+    "imdbcard": "0010880ca42741d096159aade930170d~mv2.png",     # tarjeta de IMDb Pro
+    "logo_imdb": "e29a2896a6c84f5a95ab6398655bd858~mv2.png",
+    "logo_aa": "1fbca671225a4599bf58f1a1957766f2~mv2.png",      # Actors Access
 }
 # Vídeo del reel (Wix Video, sin sonido de portada). Se prueba la calidad más alta primero.
 REEL_SOURCES = [
@@ -306,3 +315,15 @@ HEADSHOTS = [
     ("hs-08", 18, {"en": "Diana Noris headshot with her hand on her chin", "es": "Diana Noris, foto de actriz con la mano en la barbilla"}),
     ("hs-09", 20, {"en": "Diana Noris headshot in a black blazer, three-quarter view", "es": "Diana Noris, foto de actriz con blazer negro, de tres cuartos"}),
 ]
+
+
+# --------------------------------------------------------------- vídeos de YouTube (canal de Diana Noris Smith)
+VIDEOS = {
+    "reel_es": {"id": "jsaj-kCF05c", "title": {"en": "Spanish reel", "es": "Reel en español"}, "seconds": 242, "date": "2026-10-09"},
+    "reel_en": {"id": "69_9jvr76iQ", "title": {"en": "English reel", "es": "Reel en inglés"}, "seconds": 202, "date": "2026-10-11"},
+    "theatre": {"id": "ikacfvPiPQc", "title": {"en": "Spanish theatre", "es": "Teatro en español"}, "seconds": 198, "date": "2023-10-30"},
+}
+# El reel grande de cada idioma es el de ese idioma; debajo van los demás vídeos.
+FEATURED = {"en": "reel_en", "es": "reel_es"}
+MORE = {"en": ["reel_es", "theatre"], "es": ["reel_en", "theatre"]}
+MORE_LABEL = {"en": "More videos", "es": "Más vídeos"}
