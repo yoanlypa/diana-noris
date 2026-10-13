@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261018"
+V = "20261019"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -90,10 +90,14 @@ BTS_URL = "/assets/img/bts/"
 BTS_SIZES = json.loads((SITE / "assets" / "img" / "bts" / "sizes.json").read_text(encoding="utf-8"))
 
 
-def bts_tile(stem, lang, cap):
-    w, h, tw, th = BTS_SIZES[stem]
-    return (f'<button class="tile" type="button" data-cap="{esc(cap)}" data-full="{BTS_URL}{stem}.webp" aria-label="{esc(cap)}">'
-            f'<img src="{BTS_URL}{stem}-480.webp" srcset="{BTS_URL}{stem}-480.webp {tw}w, {BTS_URL}{stem}.webp {w}w" sizes="(max-width:640px) 45vw, 240px" '
+LAT_URL = "/assets/img/latina/"
+LAT_SIZES = json.loads((SITE / "assets" / "img" / "latina" / "sizes.json").read_text(encoding="utf-8"))
+
+
+def bts_tile(stem, lang, cap, url=BTS_URL, sizes_map=BTS_SIZES):
+    w, h, tw, th = sizes_map[stem]
+    return (f'<button class="tile" type="button" data-cap="{esc(cap)}" data-full="{url}{stem}.webp" aria-label="{esc(cap)}">'
+            f'<img src="{url}{stem}-480.webp" srcset="{url}{stem}-480.webp {tw}w, {url}{stem}.webp {w}w" sizes="(max-width:640px) 45vw, 240px" '
             f'alt="{esc(cap)}" width="{tw}" height="{th}" loading="lazy" decoding="async"></button>')
 
 
@@ -378,6 +382,7 @@ def build_film(lang):
     about = "".join(f"<p>{p}</p>" for p in f["about"])
     posters = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"A Latina in DC – poster {n}", f"A Latina in DC {n}", ratio=r)}</div>'
                       for n, (k, r) in enumerate([("poster", "296/442"), ("poster2", "320/449"), ("owsf", "561/701")], 1))
+    latina = "".join(f'<div class="frame">{bts_tile(stem, lang, cap[lang], LAT_URL, LAT_SIZES)}</div>' for stem, _n, cap in C.LATINA)
     html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
 <main id="main">
 {p_hero(lang, "film", f["k"], f["h1"], "", f["lead"])}
@@ -396,11 +401,16 @@ def build_film(lang):
 </div></section>
 
 <section class="sec"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{f["photos_k"]}</span><h2 class="display d-lg">{two_tone(f["photos_h"], "")}</h2></div>
+  <div class="gallery-sm reveal" data-gallery>{latina}</div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["gallery_k"]}</span><h2 class="display d-lg">{two_tone(f["gallery_h"], "")}</h2></div>
   <div class="grid-3 reveal" data-gallery>{posters}</div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["dev_k"]}</span><h2 class="display d-lg">{two_tone(f["dev_h"], "")}</h2></div>
   <div class="soon reveal">{icon("film")}<p>{f["dev_p"]}</p></div>
 </div></section>
