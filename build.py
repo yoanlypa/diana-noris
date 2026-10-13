@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261013"
+V = "20261014"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -299,7 +299,7 @@ def build_home(lang):
 
 def build_acting(lang):
     u, a = UI[lang], C.ACTING[lang]
-    cast = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in a["cast"])
+    cast = "".join('<div class="mtable"><h3>' + t + '</h3><dl>' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in rows) + '</dl></div>' for t, rows in a["cast"])
     credits = "".join(f"<li><span>{t}</span></li>" for t in a["credits"])
     hs = "".join(f'<div class="frame">{hs_tile(stem, lang, "(max-width:640px) 90vw, 400px", n)}</div>'
                  for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
@@ -328,7 +328,7 @@ def build_acting(lang):
 
 <section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["cast_k"]}</span><h2 class="display d-lg">{two_tone(a["cast_h"], "")}</h2></div>
-  <dl class="cast reveal">{cast}</dl>
+  <div class="cast reveal">{cast}</div>
 </div></section>
 
 <section class="sec"><div class="wrap credits-grid">
