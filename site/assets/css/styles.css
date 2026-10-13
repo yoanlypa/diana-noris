@@ -307,3 +307,9 @@ h1,h2,h3,p{margin:0}
 .credits-grid{align-items:end}
 .credits-grid .credits{margin-bottom:0}
 @media (max-width:900px){.credits-grid{align-items:start}}
+
+/* biografía larga: la foto se queda fija mientras se lee */
+.about-grid{align-items:start}
+.about-grid .portrait{position:sticky;top:calc(var(--header-h) + 30px)}
+.bio-credit{margin:-.4em 0 0;font-size:13px!important;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)!important;font-family:var(--f-ui)}
+@media (max-width:900px){.about-grid .portrait{position:relative;top:auto}}

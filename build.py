@@ -296,6 +296,7 @@ def build_home(lang):
     <h2 class="display d-lg">{two_tone(h["about_h1"], h["about_h2"])}</h2>
     <div style="height:30px"></div>
     {bio}
+    <p class="bio-credit">{h["bio_credit"]}</p>
     <dl class="facts">{facts}</dl>
     <a class="btn" href="{path(lang, "acting")}">{h["about_cta"]} {ARROW}</a>
   </div>
