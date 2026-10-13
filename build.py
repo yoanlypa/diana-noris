@@ -263,19 +263,7 @@ def build_home(lang):
                 f'alt="Diana Noris, actress, filmmaker and artist" width="1942" height="805" fetchpriority="high" decoding="async"></picture>')
     facts = "".join(f"<div><dt>{a}</dt><dd>{b}</dd></div>" for a, b in h["facts"])
     bio = "".join(f"<p>{p}</p>" for p in h["bio"])
-    disc = "".join(
-        f'<a class="disc frame reveal" href="{path(lang, pg)}" style="--d:{i * .08:.2f}s">{icon(ic)}<h3 class="display d-sm">{t}</h3><p>{d}</p>'
-        f'<span class="link-arrow">{u["read_more"]} {ARROW}</span></a>'
-        for i, (ic, t, d, pg) in enumerate(h["disc"]))
-    slides = "".join(
-        f'<div class="slide frame">{hs_tile(stem, lang, "300px", n)}</div>'
-        for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
-    ring = "WATCH THE REEL • WATCH THE REEL • WATCH THE REEL • " if lang == "en" else "VER EL REEL • VER EL REEL • VER EL REEL • VER EL REEL • "
     reel = path(lang, "acting") + "#reel"
-    press = "".join(
-        f'<figure class="reveal" style="--d:{i * .08:.2f}s"><div class="frame">{tile(k, [400, 600, 900], "(max-width:900px) 100vw, 380px", cap, cap)}</div></figure>'
-        for i, (k, cap) in enumerate([("showbiz1", "ShowBiz Magazine"), ("showbiz2", "ShowBiz Magazine"), ("mags", "Magazine covers" if lang == "en" else "Portadas de revistas")]))
-
     html = head(lang, "home", [person_ld(), org_ld()]) + header(lang, "home", False) + f'''
 <main id="main">
 <section class="hero">
@@ -300,43 +288,6 @@ def build_home(lang):
     <dl class="facts">{facts}</dl>
     <a class="btn" href="{path(lang, "acting")}">{h["about_cta"]} {ARROW}</a>
   </div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{h["disc_k"]}</span><h2 class="display d-lg">{two_tone(h["disc_h1"], h["disc_h2"])}</h2></div>
-  <div class="disc-grid">{disc}</div>
-</div></section>
-
-<section class="sec"><div class="wrap feat-grid">
-  <div class="poster frame reveal">{pic("poster", [400, 600, 900], "(max-width:900px) 80vw, 460px", "A Latina in DC – poster")}</div>
-  <div class="reveal" style="--d:.1s">
-    <span class="label">{h["feat_k"]}</span>
-    <h2 class="display d-xl">{two_tone(h["feat_h1"], "")}</h2>
-    <div style="height:14px"></div>
-    <span class="status">{h["feat_status"]}</span>
-    <p class="lead" style="margin-bottom:32px">{h["feat_p"]}</p>
-    <a class="btn" href="{path(lang, "film")}">{h["feat_cta"]} {ARROW}</a>
-  </div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{h["port_k"]}</span><h2 class="display d-lg">{two_tone(h["port_h1"], h["port_h2"])}</h2></div>
-  <div class="slider-wrap reveal" data-gallery>
-    <div class="slider-nav"><button class="prev" type="button" aria-label="Previous">{CHEV_L}</button><button class="next" type="button" aria-label="Next">{CHEV_R}</button></div>
-    <div class="slider">{slides}</div>
-  </div>
-</div></section>
-
-<section class="sec reel-band" id="reel-band"><div class="wrap">
-  <a class="spin reveal" href="{reel}" aria-label="{u["watch"]}"><svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ringp" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text font-family="Alumni Sans,sans-serif" font-size="21" font-weight="600" fill="currentColor"><textPath href="#ringp" textLength="505" lengthAdjust="spacing">{ring}</textPath></text></svg><span class="play">{PLAY}</span></a>
-  <span class="label reveal">Reel</span>
-  <h2 class="display d-lg reveal">{two_tone(h["reel_cta"], "")}</h2>
-</div></section>
-
-<section class="sec"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{h["press_k"]}</span><h2 class="display d-lg">{two_tone(h["press_h1"], h["press_h2"])}</h2><p class="lead" style="margin-top:20px">{h["press_p"]}</p></div>
-  <div class="press-grid" data-gallery>{press}</div>
-  <div style="margin-top:44px"><a class="link-arrow" href="{path(lang, "press")}">{h["press_cta"]} {ARROW}</a></div>
 </div></section>
 
 {bigcta(lang, h["cta_h1"], h["cta_h2"], h["cta_p"])}
