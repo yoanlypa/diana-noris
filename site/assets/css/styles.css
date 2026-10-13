@@ -302,3 +302,8 @@ h1,h2,h3,p{margin:0}
 .logo-row a.ig{color:#b8a58f}
 .logo-row a.ig svg{width:42px;height:42px}
 @media (max-width:900px){.credits-grid{grid-template-columns:minmax(0,1fr)}.imdb-col{justify-self:start;max-width:360px}}
+
+/* créditos: la columna de IMDb termina a la misma altura que el último título de la lista */
+.credits-grid{align-items:end}
+.credits-grid .credits{margin-bottom:0}
+@media (max-width:900px){.credits-grid{align-items:start}}
