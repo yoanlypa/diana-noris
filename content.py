@@ -87,7 +87,7 @@ def path(lang, page):
 UI = {
     "en": {
         "locale": "en_US", "skip": "Skip to content", "menu": "Menu",
-        "nav": {"acting": "Acting", "film": "One Woman Show Films", "press": "Press", "artwork": "Artwork", "contact": "Contact"},
+        "nav": {"home": "Home", "acting": "Acting", "film": "One Woman Show Films", "press": "Press", "artwork": "Artwork", "contact": "Contact"},
         "watch": "Watch reel", "contact_btn": "Contact", "home": "Home",
         "roles": "Actress · Filmmaker · Artist",
         "pills": ["Bilingual EN / ES", "Spain · New York"],
@@ -99,7 +99,7 @@ UI = {
     },
     "es": {
         "locale": "es_ES", "skip": "Saltar al contenido", "menu": "Menú",
-        "nav": {"acting": "Actuación", "film": "One Woman Show Films", "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
+        "nav": {"home": "Inicio", "acting": "Actuación", "film": "One Woman Show Films", "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
         "watch": "Ver reel", "contact_btn": "Contacto", "home": "Inicio",
         "roles": "Actriz · Filmmaker · Artista",
         "pills": ["Bilingüe ES / EN", "España · Nueva York"],

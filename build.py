@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261015"
+V = "20261017"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -160,7 +160,7 @@ def header(lang, page, solid):
     u = UI[lang]
     links = "".join(
         f'<a href="{path(lang, k)}"{" aria-current=\"page\"" if k == page else ""}>{u["nav"][k]}</a>'
-        for k in ("acting", "film", "press", "artwork", "contact"))
+        for k in ("home", "acting", "film", "press", "artwork", "contact"))
     cur = lambda l: ' aria-current="true"' if l == lang else ""  # noqa: E731
     flags = (f'<a href="{path("en", page)}" hreflang="en" lang="en" title="English" aria-label="English"{cur("en")}>{FLAG_EN}</a>'
              f'<a href="{path("es", page)}" hreflang="es" lang="es" title="Español" aria-label="Español"{cur("es")}>{FLAG_ES}</a>')
@@ -305,7 +305,7 @@ def build_acting(lang):
     credits = "".join(f"<li><span>{t}</span></li>" for t in a["credits"])
     hs = "".join(f'<div class="frame">{hs_tile(stem, lang, "(max-width:640px) 90vw, 400px", n)}</div>'
                  for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
-    stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="16/10")}</div>'
+    stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 45vw, 240px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="4/3")}</div>'
                      for n, k in enumerate(["still1", "still2", "still3"], 1))
     html = head(lang, "acting", [person_ld(), breadcrumb_ld(lang, "acting", u["nav"]["acting"])] + [video_ld(k, lang) for k in C.VIDEOS], og_key="reelcover") + header(lang, "acting", True) + f'''
 <main id="main">
@@ -330,7 +330,7 @@ def build_acting(lang):
 
 <section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["stills_k"]}</span><h2 class="display d-lg">{two_tone(a["stills_h"], "")}</h2></div>
-  <div class="grid-3 reveal" data-gallery>{stills}</div>
+  <div class="gallery-sm reveal" data-gallery>{stills}</div>
 </div></section>
 
 <section class="sec"><div class="wrap">
