@@ -313,3 +313,17 @@ h1,h2,h3,p{margin:0}
 .about-grid .portrait{position:sticky;top:calc(var(--header-h) + 30px)}
 .bio-credit{margin:-.4em 0 0;font-size:13px!important;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)!important;font-family:var(--f-ui)}
 @media (max-width:900px){.about-grid .portrait{position:relative;top:auto}}
+
+/* menú: "One Woman Show Films" es largo; hasta 1200px se usa el menú desplegable y el texto no se parte */
+.nav a{white-space:nowrap}
+@media (max-width:1200px){
+  .burger{display:block}
+  .nav{position:fixed;inset:var(--header-h) 0 auto 0;background:var(--bg);flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 28px;border-bottom:1px solid var(--line);transform:translateY(-12px);opacity:0;visibility:hidden;transition:.3s}
+  .menu-open .nav{transform:none;opacity:1;visibility:visible}
+  .menu-open .header{background:var(--bg)}
+  .nav a{padding:18px 0;width:100%;border-bottom:1px solid var(--line);font-size:16px}
+  .nav a.btn{margin-top:18px;justify-content:center;border-bottom:1px solid var(--accent)}
+  .nav .nav-cta{display:none}
+  .menu-open .nav .nav-cta{display:inline-flex}
+  .header-right .btn.hdr-btn{display:none}
+}

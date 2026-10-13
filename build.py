@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261012"
+V = "20261013"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -223,7 +223,7 @@ def bigcta(lang, h1, h2, p_text):
 def p_hero(lang, page, k, h1, h2, lead):
     u = UI[lang]
     return f'''<section class="p-hero"><div class="wrap">
-  {crumbs(lang, k)}
+  {crumbs(lang, u["nav"][page])}
   <span class="label">{k}</span>
   <h1 class="display d-xl">{two_tone(h1, h2)}</h1>
   <p class="lead">{lead}</p>
