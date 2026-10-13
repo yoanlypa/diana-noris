@@ -312,12 +312,10 @@ HEADSHOTS = [
     ("hs-01", 16, {"en": "Diana Noris headshot in a burgundy leather jacket", "es": "Diana Noris, foto de actriz con chaqueta de cuero burdeos"}),
     ("hs-02", 14, {"en": "Diana Noris headshot in a black leather jacket and mustard turtleneck", "es": "Diana Noris, foto de actriz con chaqueta de cuero negra y cuello alto mostaza"}),
     ("hs-03", 15, {"en": "Diana Noris headshot in a black blazer and white top", "es": "Diana Noris, foto de actriz con blazer negro y top blanco"}),
-    ("hs-04", 13, {"en": "Diana Noris smiling in a SAG-AFTRA t-shirt", "es": "Diana Noris sonriendo con una camiseta de SAG-AFTRA"}),
-    ("hs-05", 17, {"en": "Diana Noris headshot in a grey tank top on a dark blue background", "es": "Diana Noris, foto de actriz con camiseta gris sobre fondo azul oscuro"}),
-    ("hs-06", 19, {"en": "Diana Noris headshot in a white shirt", "es": "Diana Noris, foto de actriz con camisa blanca"}),
-    ("hs-07", 21, {"en": "Diana Noris winking in a SAG-AFTRA t-shirt", "es": "Diana Noris guiñando un ojo con una camiseta de SAG-AFTRA"}),
-    ("hs-08", 18, {"en": "Diana Noris headshot with her hand on her chin", "es": "Diana Noris, foto de actriz con la mano en la barbilla"}),
-    ("hs-09", 20, {"en": "Diana Noris headshot in a black blazer, three-quarter view", "es": "Diana Noris, foto de actriz con blazer negro, de tres cuartos"}),
+    ("hs-04", 17, {"en": "Diana Noris headshot in a grey tank top on a dark blue background", "es": "Diana Noris, foto de actriz con camiseta gris sobre fondo azul oscuro"}),
+    ("hs-05", 19, {"en": "Diana Noris headshot in a white shirt", "es": "Diana Noris, foto de actriz con camisa blanca"}),
+    ("hs-06", 18, {"en": "Diana Noris headshot with her hand on her chin", "es": "Diana Noris, foto de actriz con la mano en la barbilla"}),
+    ("hs-07", 20, {"en": "Diana Noris headshot in a black blazer, three-quarter view", "es": "Diana Noris, foto de actriz con blazer negro, de tres cuartos"}),
 ]
 
 
