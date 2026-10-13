@@ -6,7 +6,7 @@ Las imágenes se enlazan de momento desde su Wix actual (demo). Para producción
 """
 
 DOMAIN = "https://www.diananoris.com"
-DEMO = True  # True -> la demo no se indexa (noindex). Poner False al publicar la web definitiva.
+DEMO = False  # True -> la demo no se indexa (noindex). Poner False al publicar la web definitiva.
 
 # --------------------------------------------------------------- redes y enlaces
 INSTAGRAM = "https://www.instagram.com/what_dianadid"
