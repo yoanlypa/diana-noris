@@ -305,7 +305,6 @@ def build_acting(lang):
                  for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
     stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="16/10")}</div>'
                      for n, k in enumerate(["still1", "still2", "still3"], 1))
-    comm = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 500px", "Shoe campaign", "Shoe campaign")}</div>' for k in ("shoe1", "shoe2"))
     html = head(lang, "acting", [person_ld(), breadcrumb_ld(lang, "acting", u["nav"]["acting"])] + [video_ld(k, lang) for k in C.VIDEOS], og_key="reelcover") + header(lang, "acting", True) + f'''
 <main id="main">
 {p_hero(lang, "acting", a["k"], a["h1"], a["h2"], a["lead"])}
@@ -315,6 +314,16 @@ def build_acting(lang):
   <div class="frame reveal">{yt_block(C.FEATURED[lang], lang)}</div>
   <span class="label reveal" style="margin:64px 0 24px">{C.MORE_LABEL[lang]}</span>
   <div class="grid-2 reveal">{"".join(f'<div class="frame">{yt_block(k, lang)}</div>' for k in C.MORE[lang])}</div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{a["hs_k"]}</span><h2 class="display d-lg">{two_tone(a["hs_h"], "")}</h2></div>
+  <div class="grid-3 hs-grid reveal" data-gallery>{hs}</div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{a["stills_k"]}</span><h2 class="display d-lg">{two_tone(a["stills_h"], "")}</h2></div>
+  <div class="grid-3 reveal" data-gallery>{stills}</div>
 </div></section>
 
 <section class="sec alt"><div class="wrap">
@@ -336,21 +345,6 @@ def build_acting(lang):
       <a class="ig" href="{C.INSTAGRAM}" target="_blank" rel="noopener me" aria-label="Instagram">{INSTAGRAM_SVG}</a>
     </div>
   </div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{a["hs_k"]}</span><h2 class="display d-lg">{two_tone(a["hs_h"], "")}</h2></div>
-  <div class="grid-3 hs-grid reveal" data-gallery>{hs}</div>
-</div></section>
-
-<section class="sec"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{a["stills_k"]}</span><h2 class="display d-lg">{two_tone(a["stills_h"], "")}</h2></div>
-  <div class="grid-3 reveal" data-gallery>{stills}</div>
-</div></section>
-
-<section class="sec alt"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{a["comm_k"]}</span><h2 class="display d-lg">{two_tone(a["comm_h"], "")}</h2><p class="lead" style="margin-top:20px">{a["comm_p"]}</p></div>
-  <div class="grid-2 reveal" data-gallery>{comm}</div>
 </div></section>
 
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
