@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261017"
+V = "20261018"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -84,6 +84,17 @@ def hs_tile(stem, lang, sizes, n):
     alt = next(a[lang] for s, _n, a in C.HEADSHOTS if s == stem)
     return (f'<button class="tile" type="button" data-cap="{esc(alt)}" data-full="{HS_URL}{stem}.webp" aria-label="{esc(alt)}">'
             f'{hs_img(stem, lang, sizes)}</button>')
+
+
+BTS_URL = "/assets/img/bts/"
+BTS_SIZES = json.loads((SITE / "assets" / "img" / "bts" / "sizes.json").read_text(encoding="utf-8"))
+
+
+def bts_tile(stem, lang, cap):
+    w, h, tw, th = BTS_SIZES[stem]
+    return (f'<button class="tile" type="button" data-cap="{esc(cap)}" data-full="{BTS_URL}{stem}.webp" aria-label="{esc(cap)}">'
+            f'<img src="{BTS_URL}{stem}-480.webp" srcset="{BTS_URL}{stem}-480.webp {tw}w, {BTS_URL}{stem}.webp {w}w" sizes="(max-width:640px) 45vw, 240px" '
+            f'alt="{esc(cap)}" width="{tw}" height="{th}" loading="lazy" decoding="async"></button>')
 
 
 # ---------------------------------------------------------------- vídeos de YouTube (carga el reproductor al pulsar)
@@ -307,6 +318,7 @@ def build_acting(lang):
                  for n, (stem, _src, _alt) in enumerate(C.HEADSHOTS, 1))
     stills = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 45vw, 240px", f"Diana Noris still {n}", f"Diana Noris – still {n}", ratio="4/3")}</div>'
                      for n, k in enumerate(["still1", "still2", "still3"], 1))
+    stills += "".join(f'<div class="frame">{bts_tile(stem, lang, cap[lang])}</div>' for stem, _n, cap in C.BTS)
     html = head(lang, "acting", [person_ld(), breadcrumb_ld(lang, "acting", u["nav"]["acting"])] + [video_ld(k, lang) for k in C.VIDEOS], og_key="reelcover") + header(lang, "acting", True) + f'''
 <main id="main">
 {p_hero(lang, "acting", a["k"], a["h1"], a["h2"], a["lead"])}

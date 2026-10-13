@@ -308,6 +308,24 @@ CONTACT = {
 
 # --------------------------------------------------------------- headshots propios (alojados en site/assets/img/headshots/)
 # (nombre del archivo, número del archivo original, textos alternativos). Se generan con process_headshots.py
+BTS = [  # (stem, nº de archivo origen, pie de foto)
+    ("bts-01", 1, {"en": "On set of “A Latina in DC”", "es": "En el set de «A Latina in DC»"}),
+    ("bts-02", 2, {"en": "On set of “A Latina in DC”", "es": "En el set de «A Latina in DC»"}),
+    ("bts-03", 3, {"en": "On set of “A Latina in DC”", "es": "En el set de «A Latina in DC»"}),
+    ("bts-04", 4, {"en": "At the trailer while filming in Madrid", "es": "En la caravana durante el rodaje en Madrid"}),
+    ("bts-05", 5, {"en": "Behind the scenes of “Bullet”", "es": "Detrás de cámaras de «Bullet»"}),
+    ("bts-06", 6, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-07", 7, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-08", 8, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-09", 9, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-10", 10, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-11", 11, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-12", 12, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-13", 13, {"en": "Behind the scenes of “The Asylum”", "es": "Detrás de cámaras de «The Asylum»"}),
+    ("bts-14", 15, {"en": "Behind the scenes, stunts in Málaga", "es": "Detrás de cámaras, escena de acción en Málaga"}),
+    ("bts-15", 16, {"en": "Behind the scenes, stunt work", "es": "Detrás de cámaras, trabajo de especialista"}),
+]
+
 HEADSHOTS = [
     ("hs-01", 16, {"en": "Diana Noris headshot in a burgundy leather jacket", "es": "Diana Noris, foto de actriz con chaqueta de cuero burdeos"}),
     ("hs-02", 14, {"en": "Diana Noris headshot in a black leather jacket and mustard turtleneck", "es": "Diana Noris, foto de actriz con chaqueta de cuero negra y cuello alto mostaza"}),
