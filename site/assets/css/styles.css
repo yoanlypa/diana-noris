@@ -330,3 +330,6 @@ h1,h2,h3,p{margin:0}
   .menu-open .nav .nav-cta{display:inline-flex}
   .header-right .btn.hdr-btn{display:none}
 }
+
+.bio-wide{max-width:820px}
+.bio-wide p{margin:0 0 1.1em}

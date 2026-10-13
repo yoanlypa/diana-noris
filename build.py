@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261014"
+V = "20261015"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -299,6 +299,8 @@ def build_home(lang):
 
 def build_acting(lang):
     u, a = UI[lang], C.ACTING[lang]
+    hm = C.HOME[lang]
+    bio = "".join(f"<p>{p}</p>" for p in hm["bio"])
     cast = "".join('<div class="mtable"><h3>' + t + '</h3><dl>' + "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in rows) + '</dl></div>' for t, rows in a["cast"])
     credits = "".join(f"<li><span>{t}</span></li>" for t in a["credits"])
     hs = "".join(f'<div class="frame">{hs_tile(stem, lang, "(max-width:640px) 90vw, 400px", n)}</div>'
@@ -322,16 +324,21 @@ def build_acting(lang):
 </div></section>
 
 <section class="sec"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{hm["about_k"]}</span><h2 class="display d-lg">{two_tone(hm["about_h1"], hm["about_h2"])}</h2></div>
+  <div class="bio-wide reveal">{bio}<p class="bio-credit">{hm["bio_credit"]}</p></div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["stills_k"]}</span><h2 class="display d-lg">{two_tone(a["stills_h"], "")}</h2></div>
   <div class="grid-3 reveal" data-gallery>{stills}</div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{a["cast_k"]}</span><h2 class="display d-lg">{two_tone(a["cast_h"], "")}</h2></div>
   <div class="cast reveal">{cast}</div>
 </div></section>
 
-<section class="sec"><div class="wrap credits-grid">
+<section class="sec alt"><div class="wrap credits-grid">
   <div>
     <div class="sec-head reveal"><span class="label">{a["credits_k"]}</span><h2 class="display d-lg">{two_tone(a["credits_h"], "")}</h2><p class="lead" style="margin-top:20px">{a["credits_p"]}</p></div>
     <ol class="credits reveal">{credits}</ol>
