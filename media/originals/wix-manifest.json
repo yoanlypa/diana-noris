@@ -1,0 +1,134 @@
+{
+ "banner": {
+  "file": "banner.png",
+  "id": "e3ddfbd003c7409092f88d5a5706c077~mv2.png",
+  "bytes": 2071725,
+  "type": "image/png"
+ },
+ "portrait": {
+  "file": "portrait.png",
+  "id": "db657863393d44b791746e5f69bff1b9~mv2.png",
+  "bytes": 3144884,
+  "type": "image/png"
+ },
+ "hs1": {
+  "file": "hs1.png",
+  "id": "26dbe0ba672648afa5e4bf8531262e92~mv2.png",
+  "bytes": 1724989,
+  "type": "image/png"
+ },
+ "hs2": {
+  "file": "hs2.png",
+  "id": "ad98e52584c0473da0e1ed69a8e13f4c~mv2.png",
+  "bytes": 2444364,
+  "type": "image/png"
+ },
+ "hs4": {
+  "file": "hs4.png",
+  "id": "7cb787dfd9a3433c86d7c739c0b083e4~mv2.png",
+  "bytes": 2431179,
+  "type": "image/png"
+ },
+ "hs5": {
+  "file": "hs5.png",
+  "id": "0ca631e2c984486b8e7ca5976470821e~mv2.png",
+  "bytes": 1704158,
+  "type": "image/png"
+ },
+ "reelcover": {
+  "file": "reelcover.png",
+  "id": "2fd7d8d6f3da430e905e577629385d24~mv2.png",
+  "bytes": 2764546,
+  "type": "image/png"
+ },
+ "still1": {
+  "file": "still1.jpg",
+  "id": "a99d5efad9cb4eaca64838cbf5d8212a~mv2.jpg",
+  "bytes": 112974,
+  "type": "image/jpeg"
+ },
+ "still2": {
+  "file": "still2.jpg",
+  "id": "82faa72f3a3545fcb72029cddd737d78~mv2.jpg",
+  "bytes": 33864,
+  "type": "image/jpeg"
+ },
+ "still3": {
+  "file": "still3.jpg",
+  "id": "6bcf5c908b1d40abada372de439376fb~mv2.jpg",
+  "bytes": 32221,
+  "type": "image/jpeg"
+ },
+ "poster": {
+  "file": "poster.jpg",
+  "id": "e4368dbc90f2482bbbe32c4d626e396e~mv2.jpg",
+  "bytes": 4165570,
+  "type": "image/jpeg"
+ },
+ "poster2": {
+  "file": "poster2.png",
+  "id": "f420b79bc6f94de79f0c689847e1b068~mv2.png",
+  "bytes": 1003182,
+  "type": "image/png"
+ },
+ "shoe1": {
+  "file": "shoe1.jpg",
+  "id": "2de2b078fcab4d86b036bf43deb039e3~mv2.jpg",
+  "bytes": 107663,
+  "type": "image/jpeg"
+ },
+ "shoe2": {
+  "file": "shoe2.jpg",
+  "id": "afb2bfb8d9c94333b6807653f8d6f478~mv2.jpg",
+  "bytes": 38927,
+  "type": "image/jpeg"
+ },
+ "showbiz1": {
+  "file": "showbiz1.png",
+  "id": "14919abba77540d98bd66a5368b3a624~mv2.png",
+  "bytes": 9010396,
+  "type": "image/png"
+ },
+ "showbiz2": {
+  "file": "showbiz2.png",
+  "id": "b302587656644e28ba8a9ee785a7ede0~mv2.png",
+  "bytes": 7649472,
+  "type": "image/png"
+ },
+ "mags": {
+  "file": "mags.png",
+  "id": "a1249fbba62f4d8ca08b9976cef40cbc~mv2.png",
+  "bytes": 789886,
+  "type": "image/png"
+ },
+ "seenon": {
+  "file": "seenon.jpg",
+  "id": "6f28c3729b2e47128cefef2315e9bfc3~mv2.jpg",
+  "bytes": 92457,
+  "type": "image/jpeg"
+ },
+ "owsf": {
+  "file": "owsf.png",
+  "id": "f3bfc64ee5ec4246be75e8de65f106a2~mv2.png",
+  "bytes": 2473974,
+  "type": "image/png"
+ },
+ "imdbcard": {
+  "file": "imdbcard.png",
+  "id": "0010880ca42741d096159aade930170d~mv2.png",
+  "bytes": 502009,
+  "type": "image/png"
+ },
+ "logo_imdb": {
+  "file": "logo_imdb.png",
+  "id": "e29a2896a6c84f5a95ab6398655bd858~mv2.png",
+  "bytes": 898448,
+  "type": "image/png"
+ },
+ "logo_aa": {
+  "file": "logo_aa.png",
+  "id": "1fbca671225a4599bf58f1a1957766f2~mv2.png",
+  "bytes": 438817,
+  "type": "image/png"
+ }
+}
