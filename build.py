@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261020"
+V = "20261021"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -391,7 +391,7 @@ def build_film(lang):
     u, f = UI[lang], C.FILM[lang]
     about = "".join(f"<p>{p}</p>" for p in f["about"])
     posters = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"A Latina in DC – poster {n}", f"A Latina in DC {n}", ratio=r)}</div>'
-                      for n, (k, r) in enumerate([("poster", "296/442"), ("poster2", "320/449"), ("owsf", "561/701")], 1))
+                      for n, (k, r) in enumerate([("poster", "1122/1402"), ("poster2", "320/449"), ("owsf", "561/701")], 1))
     latina = "".join(f'<div class="frame">{bts_tile(stem, lang, cap[lang], LAT_URL, LAT_SIZES)}</div>' for stem, _n, cap in C.LATINA)
     html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
 <main id="main">

@@ -114,7 +114,7 @@ h1,h2,h3,p{margin:0}
 .disc .link-arrow{font-size:15px}
 
 .feat-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,6vw,100px);align-items:center}
-.feat-grid .poster img{width:100%;border-radius:2px;aspect-ratio:296/442;object-fit:cover}
+.feat-grid .poster img{width:100%;border-radius:2px;aspect-ratio:1122/1402;object-fit:cover}
 .status{display:inline-block;font-family:var(--f-ui);font-weight:500;font-size:15px;color:#fff;border:1px solid var(--accent-l);border-radius:999px;padding:7px 18px;margin:6px 0 24px}
 
 .slider-wrap{position:relative}
