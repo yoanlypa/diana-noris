@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261021"
+V = "20261022"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -416,11 +416,24 @@ def build_film(lang):
 </div></section>
 
 <section class="sec alt"><div class="wrap">
+  <div class="kit reveal">
+    <a class="kit-cover frame" href="/press-kit/A-Latina-in-DC-Press-Kit.pdf" target="_blank" rel="noopener" aria-label="{f["kit_h"]}"><img src="/assets/img/press-kit-cover.webp" alt="A Latina in DC – official press kit" width="900" height="636" loading="lazy" decoding="async"></a>
+    <div class="kit-text">
+      <span class="label">{f["kit_k"]}</span>
+      <h2 class="display d-lg">{two_tone(f["kit_h"], "")}</h2>
+      <p class="lead">{f["kit_p"]}</p>
+      <div class="btn-row"><a class="btn" href="/press-kit/A-Latina-in-DC-Press-Kit.pdf" download="A-Latina-in-DC-Press-Kit.pdf">{f["kit_btn"]} {ARROW}</a></div>
+      <span class="kit-meta">{f["kit_meta"]}</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["gallery_k"]}</span><h2 class="display d-lg">{two_tone(f["gallery_h"], "")}</h2></div>
   <div class="grid-3 reveal" data-gallery>{posters}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["dev_k"]}</span><h2 class="display d-lg">{two_tone(f["dev_h"], "")}</h2></div>
   <div class="soon reveal">{icon("film")}<p>{f["dev_p"]}</p></div>
 </div></section>
