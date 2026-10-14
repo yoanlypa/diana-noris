@@ -467,6 +467,7 @@ def build_artwork(lang):
 <main id="main">
 {p_hero(lang, "artwork", a["k"], a["h1"], a["h2"], a["lead"])}
 <section class="sec"><div class="wrap"><div class="text-col reveal">{ps}</div>
+  <div class="frame reveal" style="max-width:900px;margin:56px 0 0">{video_block(next(v for v in C.PRESS_VIDEOS if v["id"] == "jIfbCNfSy6A"), lang)}</div>
   <div class="soon reveal">{icon("art")}<p>{a["soon"]}</p></div>
 </div></section>
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
