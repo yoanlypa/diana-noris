@@ -400,4 +400,5 @@ PRESS_VIDEOS = [
     {"provider": "youtube", "id": "H7yVnMvBzq8", "title": {"en": "Infórmate con GiGi · Interview", "es": "Infórmate con GiGi · Entrevista"}},
     {"provider": "youtube", "id": "KLtiS08MJDU", "title": {"en": "Alexis Valdés · Interview, 2012", "es": "Alexis Valdés · Entrevista, 2012"}},
     {"provider": "youtube", "id": "z2mEJIvpMXU", "title": {"en": "NBC · In the Mix", "es": "NBC · In the Mix"}},
+    {"provider": "youtube", "id": "pAdNu5XUI3Y", "title": {"en": "Interviews · Clips", "es": "Entrevistas · Fragmentos"}},
 ]
