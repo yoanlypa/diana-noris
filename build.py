@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261019"
+V = "20261020"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -110,19 +110,30 @@ def iso_dur(sec):
     return f"PT{sec // 60}M{sec % 60}S"
 
 
-def yt_block(key, lang):
-    v = C.VIDEOS[key]
+def video_block(v, lang):
+    """Miniatura con botón de play; el reproductor (YouTube sin cookies o Vimeo) se carga solo al pulsar (main.js)."""
     title = esc(v["title"][lang])
     vid = v["id"]
-    hq = "https://i.ytimg.com/vi/" + vid + "/hqdefault.jpg"
-    onerr = "this.onerror=null;this.src='" + hq + "'"
-    onload = "if(this.naturalWidth<300){this.onload=null;this.src='" + hq + "'}"
+    cap = title + (" · " + fmt_dur(v["seconds"]) if v.get("seconds") else "")
+    if v.get("provider", "youtube") == "vimeo":
+        link, data = "https://vimeo.com/" + vid, 'data-vimeo="' + vid + '"'
+        thumb = '<img src="' + v["thumb"] + '" alt="' + title + '" loading="lazy" decoding="async">'
+    else:
+        hq = "https://i.ytimg.com/vi/" + vid + "/hqdefault.jpg"
+        onerr = "this.onerror=null;this.src='" + hq + "'"
+        onload = "if(this.naturalWidth<300){this.onload=null;this.src='" + hq + "'}"
+        link, data = "https://www.youtube.com/watch?v=" + vid, 'data-yt="' + vid + '"'
+        thumb = ('<img src="https://i.ytimg.com/vi/' + vid + '/maxresdefault.jpg" alt="' + title + '" loading="lazy" decoding="async" '
+                 'onerror="' + onerr + '" onload="' + onload + '">')
     return (
-        '<div class="video"><a class="yt" href="https://www.youtube.com/watch?v=' + vid + '" target="_blank" rel="noopener" '
-        'data-yt="' + vid + '" data-title="' + title + '" aria-label="' + title + '">'
-        '<img src="https://i.ytimg.com/vi/' + vid + '/maxresdefault.jpg" alt="' + title + '" loading="lazy" decoding="async" onerror="' + onerr + '" onload="' + onload + '">'
+        '<div class="video"><a class="yt" href="' + link + '" target="_blank" rel="noopener" '
+        + data + ' data-title="' + title + '" aria-label="' + title + '">' + thumb +
         '<span class="yt-play" aria-hidden="true">' + PLAY + '</span>'
-        '<span class="yt-cap">' + title + ' · ' + fmt_dur(v["seconds"]) + '</span></a></div>')
+        '<span class="yt-cap">' + cap + '</span></a></div>')
+
+
+def yt_block(key, lang):
+    return video_block(C.VIDEOS[key], lang)
 
 
 def video_ld(key, lang):
@@ -158,12 +169,11 @@ def head(lang, page, ld, og_key="banner", solid_title=None):
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{DOMAIN}{p}">
 <meta property="og:locale" content="{UI[lang]["locale"]}">
-<meta property="og:image" content="{img(MEDIA[og_key], 1200)}">
+<meta property="og:image" content="{DOMAIN}{img(MEDIA[og_key], 1200)}">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;600&family=DM+Sans:wght@400;500;700&family=Inter:wght@300;400;500&family=Pinyon+Script&display=swap">
 <link rel="stylesheet" href="/assets/css/styles.css?v={V}">
 {ld_html}
@@ -427,6 +437,7 @@ def build_press(lang):
     covers = "".join(f'<figure><div class="frame">{tile(k, [400, 700, 1000], "(max-width:900px) 100vw, 380px", cap, cap)}</div><figcaption>{cap}</figcaption></figure>'
                      for k, cap in [("showbiz1", "ShowBiz Magazine"), ("showbiz2", "ShowBiz Magazine"), ("mags", "Magazine covers" if lang == "en" else "Portadas de revistas")])
     seen = f'<div class="frame" style="max-width:520px">{tile("seenon", [400, 700, 1000], "(max-width:640px) 100vw, 520px", p["seen_h"], p["seen_h"], ratio="1/1")}</div>'
+    videos = "".join(f'<div class="frame">{video_block(v, lang)}</div>' for v in C.PRESS_VIDEOS)
     html = head(lang, "press", [breadcrumb_ld(lang, "press", u["nav"]["press"])], og_key="showbiz1") + header(lang, "press", True) + f'''
 <main id="main">
 {p_hero(lang, "press", p["k"], p["h1"], p["h2"], p["lead"])}
@@ -435,6 +446,10 @@ def build_press(lang):
   <div class="press-grid reveal" data-gallery>{covers}</div>
 </div></section>
 <section class="sec alt"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{p["videos_h"]}</span></div>
+  <div class="grid-2 reveal">{videos}</div>
+</div></section>
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{p["seen_h"]}</span></div>
   <div class="reveal" data-gallery>{seen}</div>
 </div></section>
@@ -502,6 +517,32 @@ def write_support():
     (Path(__file__).resolve().parent / "Staticfile").write_text("root: site\n", encoding="utf-8")
 
 
+MEDIA_SRC = Path(__file__).resolve().parent / "media" / "originals"
+MEDIA_OUT = SITE / "assets" / "img" / "media"
+
+
+def make_media():
+    """Genera en WebP cada imagen y ancho que han pedido las páginas (C.MEDIA_USED) a partir de media/originals/.
+    Solo crea las que faltan; para rehacerlas todas, borra site/assets/img/media/."""
+    from PIL import Image, ImageOps
+    MEDIA_OUT.mkdir(parents=True, exist_ok=True)
+    made = 0
+    for key, w in sorted(C.MEDIA_USED):
+        out = MEDIA_OUT / f"{key}-{w}.webp"
+        if out.exists():
+            continue
+        src = next(iter(sorted(MEDIA_SRC.glob(f"{key}.*"))), None)
+        if src is None:
+            sys.exit(f"falta el original de '{key}' en media/originals/")
+        im = ImageOps.exif_transpose(Image.open(src))
+        im = im.convert("RGBA" if im.mode in ("RGBA", "LA", "P") else "RGB")
+        if im.width > w:
+            im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+        im.save(out, "WEBP", quality=82, method=6)
+        made += 1
+    print(f"imágenes: {len(C.MEDIA_USED)} en uso, {made} generadas")
+
+
 if __name__ == "__main__":
     for lang in ("en", "es"):
         build_home(lang)
@@ -511,4 +552,5 @@ if __name__ == "__main__":
         build_artwork(lang)
         build_contact(lang)
     write_support()
+    make_media()
     print("built: 12 pages")

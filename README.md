@@ -18,7 +18,8 @@ python build.py
 Genera las 12 páginas en `site/`. El diseño está en `site/assets/css/styles.css` y `site/assets/js/main.js`.
 
 ## Estado de la demo
-- **Imágenes y vídeo**: se enlazan desde el Wix actual de Diana (`static.wixstatic.com`, `video.wixstatic.com`) para poder enseñar la demo sin copiar archivos. Para producción hay que descargar/recibir los originales en alta resolución y alojarlos en `site/assets/img/`. Si se borra el Wix, dejarían de verse.
+- **Imágenes**: ya no dependen de Wix. Los originales descargados del Wix antiguo están en `media/originals/` (con `wix-manifest.json` como referencia) y `python build.py` genera las versiones WebP que usa cada página en `site/assets/img/media/` (solo crea las que falten). Para cambiar una imagen, sustituye su original y borra sus WebP de `site/assets/img/media/`.
+- **Vídeos de prensa**: lista `PRESS_VIDEOS` en `content.py` (YouTube o Vimeo). Se muestran en Press / Prensa con el mismo reproductor que los reels (el vídeo se carga al pulsar).
 - **No se indexa**: `DEMO = True` en `content.py` añade `noindex` y un `robots.txt` que bloquea todo. Poner `False` el día de publicar.
 - **Textos**: salen de su web actual, su ficha de casting y su biografía. La traducción al español es propia: debe revisarla Diana.
 - **Datos que hay que confirmar** (marcados con `# TODO Diana` en `content.py`): representación vigente (The Wayne Agency es de EE. UU.), créditos (ahora solo los 4 títulos de su tarjeta de IMDb, sin papeles), si se publican medidas de casting (solo altura, ojos y pelo), y que no haya datos de contacto que ya no valgan.

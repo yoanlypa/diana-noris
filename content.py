@@ -1,7 +1,8 @@
 """Contenido de diananoris.com (EN principal / ES). Edita aquí textos, enlaces e imágenes y ejecuta: python build.py
 
-Los textos salen de la web actual de Diana (https://www.diananoris.com), de su ficha de casting y de su biografía.
-Las imágenes se enlazan de momento desde su Wix actual (demo). Para producción hay que sustituirlas por archivos propios en alta resolución.
+Los textos salen de la web antigua de Diana (Wix), de su ficha de casting y de su biografía.
+Todas las imágenes se sirven desde la propia web: los originales están en media/originals/ y build.py genera
+las versiones optimizadas (WebP) en site/assets/img/media/. Ya no se carga nada de Wix.
 # TODO Diana: confirmar todos los textos y datos (los de español son una traducción propia).
 """
 
@@ -16,21 +17,27 @@ IMDB = "https://www.imdb.com/name/nm4434619/"
 ACTORS_ACCESS = "https://resumes.actorsaccess.com/Diananoris"
 SOCIALS = [("Instagram", INSTAGRAM), ("YouTube", YOUTUBE), ("Facebook", FACEBOOK), ("IMDb", IMDB), ("Actors Access", ACTORS_ACCESS)]
 
-# --------------------------------------------------------------- imágenes (Wix, prefijo 761d7f_)
-WIX = "https://static.wixstatic.com/media/761d7f_"
-
-
-def img_png(media_id, w):
-    """Igual que img() pero conserva la transparencia (para logos)."""
-    return f"{WIX}{media_id}/v1/fit/w_{w},h_{w},al_c,q_90,enc_auto/logo.png"
+# --------------------------------------------------------------- imágenes (archivos propios)
+# Cada imagen tiene su original en media/originals/<clave>.<png|jpg> (descargados del Wix antiguo).
+# img() devuelve la ruta de la versión WebP de ese ancho y la apunta en MEDIA_USED;
+# build.py genera al final las que falten (python build.py lo hace todo).
+MEDIA_URL = "/assets/img/media/"
+MEDIA_USED = set()
 
 
 def img(media_id, w, h=None, mode="fit", q=82):
-    """URL optimizada del servidor de imágenes de Wix (sirve webp/avif según el navegador)."""
-    h = h or w
-    return f"{WIX}{media_id}/v1/{mode}/w_{w},h_{h},al_c,q_{q},enc_auto/diana-noris.jpg"
+    """Ruta de la imagen local en WebP con w píxeles de ancho (h, mode y q se mantienen por compatibilidad)."""
+    key = MEDIA_KEY[media_id]
+    MEDIA_USED.add((key, w))
+    return f"{MEDIA_URL}{key}-{w}.webp"
 
 
+def img_png(media_id, w):
+    """Igual que img(); el WebP conserva la transparencia (logos)."""
+    return img(media_id, w)
+
+
+# Clave -> identificador que tenía en Wix (se conserva solo como referencia del origen).
 MEDIA = {
     "banner": "e3ddfbd003c7409092f88d5a5706c077~mv2.png",      # banner panorámico (lleva el logo manuscrito)
     "portrait": "db657863393d44b791746e5f69bff1b9~mv2.png",    # retrato de la portada
@@ -55,11 +62,7 @@ MEDIA = {
     "logo_imdb": "e29a2896a6c84f5a95ab6398655bd858~mv2.png",
     "logo_aa": "1fbca671225a4599bf58f1a1957766f2~mv2.png",      # Actors Access
 }
-# Vídeo del reel (Wix Video, sin sonido de portada). Se prueba la calidad más alta primero.
-REEL_SOURCES = [
-    "https://video.wixstatic.com/video/11062b_62f0356712544a87b392417662c4658d/720p/mp4/file.mp4",
-    "https://video.wixstatic.com/video/11062b_62f0356712544a87b392417662c4658d/480p/mp4/file.mp4",
-]
+MEDIA_KEY = {v: k for k, v in MEDIA.items()}
 
 # --------------------------------------------------------------- representación (copiado de su web actual)
 AGENCY = {
@@ -276,9 +279,9 @@ FILM = {
 
 PRESS = {
     "en": {"k": "Press", "h1": "In the", "h2": "spotlight", "lead": "Magazine covers and press appearances featuring Diana Noris.",
-           "covers_h": "Covers", "seen_h": "As seen on"},
+           "covers_h": "Covers", "seen_h": "As seen on", "videos_h": "Interviews & TV"},
     "es": {"k": "Prensa", "h1": "En", "h2": "portada", "lead": "Portadas de revistas y apariciones en prensa de Diana Noris.",
-           "covers_h": "Portadas", "seen_h": "Visto en"},
+           "covers_h": "Portadas", "seen_h": "Visto en", "videos_h": "Entrevistas y televisión"},
 }
 
 ARTWORK = {
@@ -379,3 +382,16 @@ VIDEOS = {
 FEATURED = {"en": "reel_en", "es": "reel_es"}
 MORE = {"en": ["reel_es", "theatre"], "es": ["reel_en", "theatre"]}
 MORE_LABEL = {"en": "More videos", "es": "Más vídeos"}
+
+# --------------------------------------------------------------- vídeos de prensa (página Press / Prensa)
+# provider: "youtube" o "vimeo". Para añadir otro, copia una línea y cambia id y títulos.
+# "seconds" y "thumb" son opcionales (thumb solo hace falta en Vimeo).
+PRESS_VIDEOS = [
+    {"provider": "youtube", "id": "wOBUv72GP60", "title": {"en": "VIP TV · Women in the Arts", "es": "VIP TV · Women in the Arts"}},
+    {"provider": "youtube", "id": "jIfbCNfSy6A", "title": {"en": "Arte Mujer", "es": "Arte Mujer"}},
+    {"provider": "vimeo", "id": "320407154", "title": {"en": "89.3 FM NYC · Radio interview", "es": "89.3 FM NYC · Entrevista en radio"},
+     "seconds": 102, "thumb": "https://i.vimeocdn.com/video/762825587-cd6f70aa85e26365397a7aece5fade1c8c7caf76fc92438774c0df992d813e30-d_1280"},
+    {"provider": "youtube", "id": "H7yVnMvBzq8", "title": {"en": "Infórmate con GiGi · Interview", "es": "Infórmate con GiGi · Entrevista"}},
+    {"provider": "youtube", "id": "KLtiS08MJDU", "title": {"en": "Alexis Valdés · Interview, 2012", "es": "Alexis Valdés · Entrevista, 2012"}},
+    {"provider": "youtube", "id": "z2mEJIvpMXU", "title": {"en": "NBC · In the Mix", "es": "NBC · In the Mix"}},
+]
