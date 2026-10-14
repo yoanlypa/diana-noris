@@ -214,7 +214,7 @@ HOME = {
 ACTING = {
     "en": {
         "k": "Acting", "h1": "Bilingual actress", "h2": "English · Spanish",
-        "lead": "Working in both English and Spanish, Diana brings a cross-cultural perspective to every role, with a focus on character-driven storytelling that feels both intimate and universal.",
+        "lead": "Fluent in English and Spanish, Diana works seamlessly across both languages, bringing authenticity, emotional range, and cultural fluency to every role. As a dual U.S. and European citizen, she is passport-ready and available to work across both continents, giving productions greater flexibility for international casting.",
         "reel_k": "Reel", "reel_h": "Watch the reel", "reel_note": "Acting reel",
         "cast_k": "Casting profile", "cast_h": "At a glance",
         "cast": [("American measurements", [("Height", "5'7\""), ("Weight", "120 lbs"), ("Bra size", "34C"), ("Waist", "29 in"), ("Hips", "34 in"), ("Eye color", "Green"), ("Hair color", "Auburn")]), ("European measurements", [("Height", "170 cm"), ("Weight", "54.4 kg"), ("Bra size", "75C"), ("Waist", "73.7 cm"), ("Hips", "86.4 cm"), ("Eye color", "Green"), ("Hair color", "Auburn")])],
@@ -229,7 +229,7 @@ ACTING = {
     },
     "es": {
         "k": "Actuación", "h1": "Actriz bilingüe", "h2": "Español · Inglés",
-        "lead": "Trabajando en español e inglés, Diana aporta una mirada intercultural a cada papel, con foco en una narrativa centrada en los personajes, íntima y universal a la vez.",
+        "lead": "Con dominio del inglés y del español, Diana trabaja con total naturalidad en ambos idiomas y aporta autenticidad, rango emocional y fluidez cultural a cada papel. Como ciudadana estadounidense y europea, tiene el pasaporte listo y está disponible para trabajar en ambos continentes, lo que da a las producciones mayor flexibilidad en castings internacionales.",
         "reel_k": "Reel", "reel_h": "Ver el reel", "reel_note": "Reel de actuación",
         "cast_k": "Ficha de casting", "cast_h": "De un vistazo",
         "cast": [("Medidas americanas", [("Altura", "5'7\""), ("Peso", "120 lbs"), ("Copa", "34C"), ("Cintura", "29 in"), ("Cadera", "34 in"), ("Ojos", "Verdes"), ("Pelo", "Caoba")]), ("Medidas europeas", [("Altura", "170 cm"), ("Peso", "54,4 kg"), ("Copa", "75C"), ("Cintura", "73,7 cm"), ("Cadera", "86,4 cm"), ("Ojos", "Verdes"), ("Pelo", "Caoba")])],
