@@ -486,14 +486,12 @@ def build_contact(lang):
             f'sizes="(max-width:900px) 70vw, 380px" alt="{alt}" width="520" height="657" fetchpriority="high" decoding="async"></div>')
     html = head(lang, "contact", [breadcrumb_ld(lang, "contact", u["nav"]["contact"])]) + header(lang, "contact", True) + f'''
 <main id="main">
-{p_hero(lang, "contact", c["k"], c["h1"], c["h2"], c["lead"], side)}
+{p_hero(lang, "contact", c["k"], c["h1"], c["h2"], c["lead"] + '</p><p class="script-note">' + c["note"], side)}
 <section class="sec"><div class="wrap">
   <div class="contact-grid">
     <div class="c-card frame reveal"><h3>{c["social_h"]}</h3><span class="role">Diana Noris</span><ul>{soc}</ul></div>
     <div class="c-card frame reveal" style="--d:.1s"><h3>{ag["name"]}</h3><span class="role">{ag["role"][lang]}</span><ul>{phones}</ul></div>
   </div>
-  <div class="text-col reveal" style="margin-top:50px"><span class="label">{c["base_h"]}</span><p class="lead">{c["base"]}</p></div>
-  <p class="script-note reveal">{c["note"]}</p>
 </div></section>
 </main>
 
