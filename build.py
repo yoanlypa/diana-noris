@@ -245,15 +245,15 @@ def bigcta(lang, h1, h2, p_text):
 </div></section>'''
 
 
-def p_hero(lang, page, k, h1, h2, lead):
+def p_hero(lang, page, k, h1, h2, lead, side=""):
     u = UI[lang]
-    return f'''<section class="p-hero"><div class="wrap">
-  {crumbs(lang, u["nav"][page])}
+    text = f'''{crumbs(lang, u["nav"][page])}
   <span class="label">{k}</span>
   <h1 class="display d-xl">{two_tone(h1, h2)}</h1>
-  <p class="lead">{lead}</p>
-</div></section>
-'''
+  <p class="lead">{lead}</p>'''
+    if side:
+        return f'<section class="p-hero has-side"><div class="wrap p-hero-grid"><div class="p-hero-text">{text}</div>{side}</div></section>\n'
+    return f'<section class="p-hero"><div class="wrap">{text}</div></section>\n'
 
 
 # ---------------------------------------------------------------- JSON-LD
@@ -481,13 +481,16 @@ def build_contact(lang):
     ag = C.AGENCY
     phones = "".join(f'<li><span>{loc}</span><a href="tel:+1{num.replace(".", "")}">{num}</a></li>' for loc, num in ag["phones"])
     soc = "".join(f'<li><span>{name}</span><a href="{url}" target="_blank" rel="noopener me">{url.replace("https://www.", "").replace("https://", "")}</a></li>' for name, url in C.SOCIALS)
+    alt = "Diana Noris, actress and filmmaker" if lang == "en" else "Diana Noris, actriz y filmmaker"
+    side = (f'<div class="p-hero-photo frame reveal"><img src="/assets/img/contact-diana-520.webp" srcset="/assets/img/contact-diana-520.webp 520w, /assets/img/contact-diana.webp 900w" '
+            f'sizes="(max-width:900px) 70vw, 380px" alt="{alt}" width="520" height="657" fetchpriority="high" decoding="async"></div>')
     html = head(lang, "contact", [breadcrumb_ld(lang, "contact", u["nav"]["contact"])]) + header(lang, "contact", True) + f'''
 <main id="main">
-{p_hero(lang, "contact", c["k"], c["h1"], c["h2"], c["lead"])}
+{p_hero(lang, "contact", c["k"], c["h1"], c["h2"], c["lead"], side)}
 <section class="sec"><div class="wrap">
   <div class="contact-grid">
-    <div class="c-card frame reveal"><h3>{ag["name"]}</h3><span class="role">{ag["role"][lang]}</span><ul>{phones}</ul></div>
-    <div class="c-card frame reveal" style="--d:.1s"><h3>{c["social_h"]}</h3><span class="role">Diana Noris</span><ul>{soc}</ul></div>
+    <div class="c-card frame reveal"><h3>{c["social_h"]}</h3><span class="role">Diana Noris</span><ul>{soc}</ul></div>
+    <div class="c-card frame reveal" style="--d:.1s"><h3>{ag["name"]}</h3><span class="role">{ag["role"][lang]}</span><ul>{phones}</ul></div>
   </div>
   <div class="text-col reveal" style="margin-top:50px"><span class="label">{c["base_h"]}</span><p class="lead">{c["base"]}</p></div>
   <p class="script-note reveal">{c["note"]}</p>
