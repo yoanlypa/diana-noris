@@ -250,7 +250,7 @@ def p_hero(lang, page, k, h1, h2, lead, side=""):
     text = f'''{crumbs(lang, u["nav"][page])}
   <span class="label">{k}</span>
   <h1 class="display d-xl">{two_tone(h1, h2)}</h1>
-  <p class="lead">{lead}</p>'''
+  {'<p class="lead">' + lead + '</p>' if lead else ''}'''
     if side:
         return f'<section class="p-hero has-side"><div class="wrap p-hero-grid"><div class="p-hero-text">{text}</div>{side}</div></section>\n'
     return f'<section class="p-hero"><div class="wrap">{text}</div></section>\n'

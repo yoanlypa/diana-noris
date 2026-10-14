@@ -285,15 +285,21 @@ PRESS = {
 }
 
 ARTWORK = {
-    "en": {"k": "Artwork", "h1": "Mixed-media", "h2": "and whimsical art",
-           "lead": "In addition to her work in film and acting, Diana is an accomplished visual artist specializing in mixed-media and whimsical art.",
-           "p": ["She previously owned and operated an art gallery in Miami, Florida, and her artwork has been collected and sold to buyers around the world.",
-                 "Her background as an artist continues to influence her filmmaking, particularly her approach to visual storytelling, composition, color and character."],
+    "en": {"k": "Artwork", "h1": "Artist", "h2": "",
+           "lead": "",
+           "p": ["Diana Noris is an artist known for whimsical, imaginative paintings that combine traditional techniques with unexpected materials and texture. Her work often blends oil and acrylic paint with fabric, textiles, rhinestones, and other mixed-media elements, creating pieces that are playful, dimensional, and highly individual.",
+                 "She previously owned an art gallery in Miami, where she exhibited and sold her work, and she continues to create commissioned pieces for private clients. Her collectors have included personalities from the entertainment industry and other high-profile clients.",
+                 "Her work has been featured by CNN en Español, CNN, Forbes, and Latina Magazine, among other media outlets.",
+                 "Now based in Málaga, Diana is working on a new collection that she is preparing to exhibit in Málaga. The collection is currently in development, and she is excited to complete the work and present it in an upcoming exhibition.",
+                 "Painting remains an important part of her creative life, giving her a space to experiment with color, texture, humor, and imagination."],
            "soon": "Gallery coming soon"},
-    "es": {"k": "Arte", "h1": "Técnica mixta", "h2": "y arte fantasioso",
-           "lead": "Además de su trabajo en cine y actuación, Diana es una artista visual consumada, especializada en técnica mixta y arte de estilo fantasioso.",
-           "p": ["Fue propietaria y gestora de una galería de arte en Miami, Florida, y su obra ha sido adquirida por compradores de todo el mundo.",
-                 "Su formación como artista sigue influyendo en su cine, especialmente en su manera de entender la narración visual, la composición, el color y los personajes."],
+    "es": {"k": "Arte", "h1": "Artista", "h2": "",
+           "lead": "",
+           "p": ["Diana Noris es una artista conocida por sus pinturas fantasiosas e imaginativas, que combinan técnicas tradicionales con materiales y texturas inesperados. Su obra mezcla a menudo óleo y acrílico con tela, textiles, strass y otros elementos de técnica mixta, y da lugar a piezas lúdicas, con volumen y muy personales.",
+                 "Fue propietaria de una galería de arte en Miami, donde exhibió y vendió su obra, y sigue creando piezas por encargo para clientes privados. Entre sus coleccionistas se cuentan personalidades del mundo del espectáculo y otros clientes de alto perfil.",
+                 "Su trabajo ha sido destacado por CNN en Español, CNN, Forbes y Latina Magazine, entre otros medios.",
+                 "Ahora afincada en Málaga, Diana trabaja en una nueva colección que prepara para exponer en Málaga. La colección está en desarrollo y está ilusionada con terminarla y presentarla en una próxima exposición.",
+                 "La pintura sigue siendo una parte importante de su vida creativa y le ofrece un espacio para experimentar con el color, la textura, el humor y la imaginación."],
            "soon": "Galería próximamente"},
 }
 
