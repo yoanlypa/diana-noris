@@ -393,12 +393,12 @@ MORE_LABEL = {"en": "More videos", "es": "Más vídeos"}
 # provider: "youtube" o "vimeo". Para añadir otro, copia una línea y cambia id y títulos.
 # "seconds" y "thumb" son opcionales (thumb solo hace falta en Vimeo).
 PRESS_VIDEOS = [
+    {"provider": "youtube", "id": "KLtiS08MJDU", "title": {"en": "Alexis Valdés · Interview, 2012", "es": "Alexis Valdés · Entrevista, 2012"}},
+    {"provider": "youtube", "id": "pAdNu5XUI3Y", "title": {"en": "Interviews · Clips", "es": "Entrevistas · Fragmentos"}},
     {"provider": "youtube", "id": "wOBUv72GP60", "title": {"en": "VIP TV · Women in the Arts", "es": "VIP TV · Women in the Arts"}},
     {"provider": "youtube", "id": "jIfbCNfSy6A", "title": {"en": "Arte Mujer", "es": "Arte Mujer"}},
     {"provider": "vimeo", "id": "320407154", "title": {"en": "89.3 FM NYC · Radio interview", "es": "89.3 FM NYC · Entrevista en radio"},
      "seconds": 102, "thumb": "https://i.vimeocdn.com/video/762825587-cd6f70aa85e26365397a7aece5fade1c8c7caf76fc92438774c0df992d813e30-d_1280"},
     {"provider": "youtube", "id": "H7yVnMvBzq8", "title": {"en": "Infórmate con GiGi · Interview", "es": "Infórmate con GiGi · Entrevista"}},
-    {"provider": "youtube", "id": "KLtiS08MJDU", "title": {"en": "Alexis Valdés · Interview, 2012", "es": "Alexis Valdés · Entrevista, 2012"}},
     {"provider": "youtube", "id": "z2mEJIvpMXU", "title": {"en": "NBC · In the Mix", "es": "NBC · In the Mix"}},
-    {"provider": "youtube", "id": "pAdNu5XUI3Y", "title": {"en": "Interviews · Clips", "es": "Entrevistas · Fragmentos"}},
 ]
