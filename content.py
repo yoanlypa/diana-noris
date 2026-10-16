@@ -260,6 +260,8 @@ FILM = {
         "gallery_k": "Gallery", "gallery_h": "Posters",
         "dev_k": "In development", "dev_h": "Projects in development",
         "dev_p": "Diana continues to develop new projects. Details will be announced here.",
+        "reviews_k": "Reviews", "reviews_h": "What audiences say",
+        "reviews_read": "Read on Letterboxd", "reviews_all": "See the film on Letterboxd",
     },
     "es": {
         "k": "Cine", "h1": "One Woman Show Films", "h2": "Historias valientes, centradas en los personajes",
@@ -276,8 +278,24 @@ FILM = {
         "gallery_k": "Galería", "gallery_h": "Carteles",
         "dev_k": "En desarrollo", "dev_h": "Proyectos en desarrollo",
         "dev_p": "Diana sigue desarrollando nuevos proyectos. Los detalles se anunciarán aquí.",
+        "reviews_k": "Reseñas", "reviews_h": "Lo que dice el público",
+        "reviews_read": "Leer en Letterboxd", "reviews_all": "Ver la película en Letterboxd",
     },
 }
+
+# --------------------------------------------------------------- reseñas de «A Latina in DC» (Letterboxd)
+# El texto es una frase literal de cada reseña, en su idioma original (no se traduce). stars: 0-5 (0 = sin nota).
+LETTERBOXD_FILM = "https://letterboxd.com/film/a-latina-in-dc/"
+REVIEWS = [
+    {"author": "Karlos7484", "stars": 5, "url": "https://letterboxd.com/karlos7484/film/a-latina-in-dc/1/",
+     "text": "A charming story with a beautiful message: Sometimes love isn’t just a swipe away — it might be right next door!"},
+    {"author": "calypsoeve", "stars": 5, "url": "https://letterboxd.com/calypsoeve/film/a-latina-in-dc/",
+     "text": "Refreshing, there were parts that made us laugh out loud. The dialogue was so natural, and the characters felt real."},
+    {"author": "Budger", "stars": 0, "url": "https://letterboxd.com/budger/film/a-latina-in-dc/",
+     "text": "I was very impressed with all the performances. This film was funny and I’m sure, relatable too."},
+    {"author": "Nerdyforfilms", "stars": 5, "url": "https://letterboxd.com/nerdyforfilms/film/a-latina-in-dc/",
+     "text": "I really loved how natural everyone’s acting felt, especially the two main actresses who play Eva and her friend. They have really great chemistry together."},
+]
 
 PRESS = {
     "en": {"k": "Press", "h1": "In the", "h2": "spotlight", "lead": "Magazine covers and press appearances featuring Diana Noris.",

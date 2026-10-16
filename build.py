@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261022"
+V = "20261023"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -393,6 +393,14 @@ def build_film(lang):
     posters = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"A Latina in DC – poster {n}", f"A Latina in DC {n}", ratio=r)}</div>'
                       for n, (k, r) in enumerate([("poster", "1122/1402"), ("poster2", "320/449"), ("owsf", "561/701")], 1))
     latina = "".join(f'<div class="frame">{bts_tile(stem, lang, cap[lang], LAT_URL, LAT_SIZES)}</div>' for stem, _n, cap in C.LATINA)
+    stars_lbl = "out of 5 stars" if lang == "en" else "de 5 estrellas"
+    reviews = "".join(
+        '<figure class="rv">'
+        + (f'<span class="rv-stars" role="img" aria-label="{r["stars"]} {stars_lbl}">{"★" * r["stars"]}</span>' if r["stars"] else "")
+        + f'<blockquote lang="en">{esc(r["text"])}</blockquote>'
+        f'<figcaption><span class="rv-author">{esc(r["author"])}</span>'
+        f'<a class="link-arrow" href="{r["url"]}" target="_blank" rel="noopener">{f["reviews_read"]} {ARROW}</a></figcaption></figure>'
+        for r in C.REVIEWS)
     html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
 <main id="main">
 {p_hero(lang, "film", f["k"], f["h1"], "", f["lead"])}
@@ -411,11 +419,17 @@ def build_film(lang):
 </div></section>
 
 <section class="sec"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{f["reviews_k"]}</span><h2 class="display d-lg">{two_tone(f["reviews_h"], "")}</h2></div>
+  <div class="reviews reveal">{reviews}</div>
+  <div class="rv-all reveal"><a class="link-arrow" href="{C.LETTERBOXD_FILM}" target="_blank" rel="noopener">{f["reviews_all"]} {ARROW}</a></div>
+</div></section>
+
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["photos_k"]}</span><h2 class="display d-lg">{two_tone(f["photos_h"], "")}</h2></div>
   <div class="gallery-sm reveal" data-gallery>{latina}</div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="kit reveal">
     <a class="kit-cover frame" href="/press-kit/A-Latina-in-DC-Press-Kit.pdf" target="_blank" rel="noopener" aria-label="{f["kit_h"]}"><img src="/assets/img/press-kit-cover.webp" alt="A Latina in DC – official press kit" width="900" height="636" loading="lazy" decoding="async"></a>
     <div class="kit-text">
@@ -428,12 +442,12 @@ def build_film(lang):
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["gallery_k"]}</span><h2 class="display d-lg">{two_tone(f["gallery_h"], "")}</h2></div>
   <div class="grid-3 reveal" data-gallery>{posters}</div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["dev_k"]}</span><h2 class="display d-lg">{two_tone(f["dev_h"], "")}</h2></div>
   <div class="soon reveal">{icon("film")}<p>{f["dev_p"]}</p></div>
 </div></section>
