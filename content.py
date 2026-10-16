@@ -73,11 +73,16 @@ AGENCY = {
 }
 
 # --------------------------------------------------------------- rutas
-PAGES = ["home", "acting", "film", "press", "artwork", "contact"]
+PAGES = ["home", "acting", "film", "latina", "filmdev", "press", "artwork", "contact"]
 SLUG = {
-    "en": {"home": "", "acting": "acting", "film": "film", "press": "press", "artwork": "artwork", "contact": "contact"},
-    "es": {"home": "", "acting": "actuacion", "film": "cine", "press": "prensa", "artwork": "arte", "contact": "contacto"},
+    "en": {"home": "", "acting": "acting", "film": "film", "latina": "film/a-latina-in-dc", "filmdev": "film/in-development",
+           "press": "press", "artwork": "artwork", "contact": "contact"},
+    "es": {"home": "", "acting": "actuacion", "film": "cine", "latina": "cine/a-latina-in-dc", "filmdev": "cine/en-desarrollo",
+           "press": "prensa", "artwork": "arte", "contact": "contacto"},
 }
+# Páginas que cuelgan de otra (submenú de One Woman Show Films y migas de pan).
+PARENT = {"latina": "film", "filmdev": "film"}
+SUBMENU = {"film": ["latina", "filmdev"]}
 
 
 def path(lang, page):
@@ -90,7 +95,8 @@ def path(lang, page):
 UI = {
     "en": {
         "locale": "en_US", "skip": "Skip to content", "menu": "Menu",
-        "nav": {"home": "Home", "acting": "Acting", "film": "One Woman Show Films", "press": "Press", "artwork": "Artwork", "contact": "Contact"},
+        "nav": {"home": "Home", "acting": "Acting", "film": "One Woman Show Films", "latina": "A Latina in DC", "filmdev": "In development",
+                "press": "Press", "artwork": "Artwork", "contact": "Contact"},
         "watch": "Watch reel", "contact_btn": "Contact", "home": "Home",
         "roles": "Actress · Filmmaker · Artist",
         "pills": ["Bilingual EN / ES", "Spain · New York"],
@@ -102,7 +108,8 @@ UI = {
     },
     "es": {
         "locale": "es_ES", "skip": "Saltar al contenido", "menu": "Menú",
-        "nav": {"home": "Inicio", "acting": "Actuación", "film": "One Woman Show Films", "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
+        "nav": {"home": "Inicio", "acting": "Actuación", "film": "One Woman Show Films", "latina": "A Latina in DC", "filmdev": "En desarrollo",
+                "press": "Prensa", "artwork": "Arte", "contact": "Contacto"},
         "watch": "Ver reel", "contact_btn": "Contacto", "home": "Inicio",
         "roles": "Actriz · Filmmaker · Artista",
         "pills": ["Bilingüe ES / EN", "España · Nueva York"],
@@ -123,6 +130,10 @@ SEO = {
                    "Reel, headshots and casting profile of Diana Noris, a bilingual (English/Spanish) actress working on Spanish and European productions."),
         "film": ("Film | One Woman Show Films & A Latina in DC – Diana Noris",
                  "One Woman Show Films, the independent production company founded by Diana Noris, and the film A Latina in DC, coming to festivals worldwide."),
+        "latina": ("A Latina in DC | Short film by One Woman Show Films – Diana Noris",
+                   "A Latina in DC, the short film by Diana Noris and One Woman Show Films: synopsis, audience reviews, photos, posters and press kit."),
+        "filmdev": ("In development | One Woman Show Films – Diana Noris",
+                    "Projects in development at One Woman Show Films, the independent production company founded by Diana Noris."),
         "press": ("Press | Diana Noris", "Press and magazine covers featuring actress and filmmaker Diana Noris."),
         "artwork": ("Artwork | Diana Noris – Mixed-media & Whimsical Art", "Mixed-media and whimsical art by Diana Noris, former owner of an art gallery in Miami."),
         "contact": ("Contact | Diana Noris", "Representation and contact details for actress and filmmaker Diana Noris."),
@@ -134,6 +145,10 @@ SEO = {
                    "Reel, fotos de actriz y ficha de casting de Diana Noris, actriz bilingüe (español/inglés) que trabaja en producciones españolas y europeas."),
         "film": ("Cine | One Woman Show Films y A Latina in DC – Diana Noris",
                  "One Woman Show Films, la productora independiente fundada por Diana Noris, y la película A Latina in DC, en camino a festivales de todo el mundo."),
+        "latina": ("A Latina in DC | Cortometraje de One Woman Show Films – Diana Noris",
+                   "A Latina in DC, el cortometraje de Diana Noris y One Woman Show Films: sinopsis, reseñas del público, fotos, carteles y dossier de prensa."),
+        "filmdev": ("En desarrollo | One Woman Show Films – Diana Noris",
+                    "Proyectos en desarrollo de One Woman Show Films, la productora independiente fundada por Diana Noris."),
         "press": ("Prensa | Diana Noris", "Prensa y portadas de revistas con la actriz y cineasta Diana Noris."),
         "artwork": ("Arte | Diana Noris – Técnica mixta y arte fantasioso", "Arte de técnica mixta y estilo fantasioso de Diana Noris, antigua propietaria de una galería de arte en Miami."),
         "contact": ("Contacto | Diana Noris", "Representación y datos de contacto de la actriz y cineasta Diana Noris."),
@@ -262,6 +277,7 @@ FILM = {
         "dev_p": "Diana continues to develop new projects. Details will be announced here.",
         "reviews_k": "Reviews", "reviews_h": "What audiences say",
         "reviews_read": "Read on Letterboxd", "reviews_all": "See the film on Letterboxd",
+        "films_k": "Films", "films_h": "Our films", "films_view": "View the film", "films_more": "Learn more",
     },
     "es": {
         "k": "Cine", "h1": "One Woman Show Films", "h2": "Historias valientes, centradas en los personajes",
@@ -280,6 +296,7 @@ FILM = {
         "dev_p": "Diana sigue desarrollando nuevos proyectos. Los detalles se anunciarán aquí.",
         "reviews_k": "Reseñas", "reviews_h": "Lo que dice el público",
         "reviews_read": "Leer en Letterboxd", "reviews_all": "Ver la película en Letterboxd",
+        "films_k": "Películas", "films_h": "Nuestras películas", "films_view": "Ver la película", "films_more": "Más información",
     },
 }
 

@@ -24,6 +24,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/"/></url>
+  <url><loc>https://www.diananoris.com/film/a-latina-in-dc/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/a-latina-in-dc/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/a-latina-in-dc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/a-latina-in-dc/"/></url>
+  <url><loc>https://www.diananoris.com/es/cine/a-latina-in-dc/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/a-latina-in-dc/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/a-latina-in-dc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/a-latina-in-dc/"/></url>
+  <url><loc>https://www.diananoris.com/film/in-development/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/in-development/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/en-desarrollo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/in-development/"/></url>
+  <url><loc>https://www.diananoris.com/es/cine/en-desarrollo/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/film/in-development/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/cine/en-desarrollo/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.diananoris.com/film/in-development/"/></url>
   <url><loc>https://www.diananoris.com/press/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.diananoris.com/press/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://www.diananoris.com/es/prensa/"/>

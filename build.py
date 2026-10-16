@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261023"
+V = "20261024"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -64,8 +64,9 @@ def two_tone(a, b):
     return f"<b>{a}</b> <span>{b}</span>" if b else f"<b>{a}</b>"
 
 
-def crumbs(lang, label):
-    return f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{path(lang, "home")}">{UI[lang]["home"]}</a><span>/</span>{label}</nav>'
+def crumbs(lang, label, parent=None):
+    mid = f'<a href="{path(lang, parent)}">{UI[lang]["nav"][parent]}</a><span>/</span>' if parent else ""
+    return f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{path(lang, "home")}">{UI[lang]["home"]}</a><span>/</span>{mid}{label}</nav>'
 
 
 # ---------------------------------------------------------------- headshots propios (archivos locales)
@@ -183,9 +184,19 @@ def head(lang, page, ld, og_key="banner", solid_title=None):
 
 def header(lang, page, solid):
     u = UI[lang]
-    links = "".join(
-        f'<a href="{path(lang, k)}"{" aria-current=\"page\"" if k == page else ""}>{u["nav"][k]}</a>'
-        for k in ("home", "acting", "film", "press", "artwork", "contact"))
+
+    def nav_link(k):
+        cur = ' aria-current="page"' if k == page else ""
+        subs = C.SUBMENU.get(k)
+        if not subs:
+            return f'<a href="{path(lang, k)}"{cur}>{u["nav"][k]}</a>'
+        if not cur and page in subs:
+            cur = ' aria-current="true"'  # estás en una página de su submenú
+        items = "".join(f'<a href="{path(lang, s)}"{" aria-current=\"page\"" if s == page else ""}>{u["nav"][s]}</a>' for s in subs)
+        return (f'<div class="nav-sub"><a href="{path(lang, k)}"{cur}>{u["nav"][k]}<span class="caret" aria-hidden="true"></span></a>'
+                f'<div class="sub">{items}</div></div>')
+
+    links = "".join(nav_link(k) for k in ("home", "acting", "film", "press", "artwork", "contact"))
     cur = lambda l: ' aria-current="true"' if l == lang else ""  # noqa: E731
     flags = (f'<a href="{path("en", page)}" hreflang="en" lang="en" title="English" aria-label="English"{cur("en")}>{FLAG_EN}</a>'
              f'<a href="{path("es", page)}" hreflang="es" lang="es" title="Español" aria-label="Español"{cur("es")}>{FLAG_ES}</a>')
@@ -247,7 +258,7 @@ def bigcta(lang, h1, h2, p_text):
 
 def p_hero(lang, page, k, h1, h2, lead, side=""):
     u = UI[lang]
-    text = f'''{crumbs(lang, u["nav"][page])}
+    text = f'''{crumbs(lang, u["nav"][page], C.PARENT.get(page))}
   <span class="label">{k}</span>
   <h1 class="display d-xl">{two_tone(h1, h2)}</h1>
   {'<p class="lead">' + lead + '</p>' if lead else ''}'''
@@ -274,9 +285,12 @@ def org_ld():
 
 
 def breadcrumb_ld(lang, page, name):
+    chain = [(UI[lang]["home"], "home")]
+    if page in C.PARENT:
+        chain.append((UI[lang]["nav"][C.PARENT[page]], C.PARENT[page]))
+    chain.append((name, page))
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": UI[lang]["home"], "item": DOMAIN + path(lang, "home")},
-        {"@type": "ListItem", "position": 2, "name": name, "item": DOMAIN + path(lang, page)}]}
+        {"@type": "ListItem", "position": i, "name": n, "item": DOMAIN + path(lang, p)} for i, (n, p) in enumerate(chain, 1)]}
 
 
 # ---------------------------------------------------------------- páginas
@@ -388,8 +402,39 @@ def build_acting(lang):
 
 
 def build_film(lang):
+    """One Woman Show Films: presentación de la productora y una tarjeta por película (submenú)."""
     u, f = UI[lang], C.FILM[lang]
     about = "".join(f"<p>{p}</p>" for p in f["about"])
+    lat, dev = path(lang, "latina"), path(lang, "filmdev")
+    cards = (
+        f'<article class="film-card reveal"><a class="fc-media" href="{lat}" aria-label="A Latina in DC">'
+        f'{pic("poster", [400, 600, 900], "(max-width:800px) 100vw, 560px", "A Latina in DC – poster")}</a>'
+        f'<div class="fc-body"><span class="status">{f["film_status"]}</span><h2 class="display d-md">A Latina in DC</h2>'
+        f'<p>{f["film_p"]}</p><a class="link-arrow" href="{lat}">{f["films_view"]} {ARROW}</a></div></article>'
+        f'<article class="film-card reveal" style="--d:.1s"><a class="fc-media fc-soon" href="{dev}" aria-label="{u["nav"]["filmdev"]}">{icon("film")}</a>'
+        f'<div class="fc-body"><span class="status">{f["dev_k"]}</span><h2 class="display d-md">{f["dev_h"]}</h2>'
+        f'<p>{f["dev_p"]}</p><a class="link-arrow" href="{dev}">{f["films_more"]} {ARROW}</a></div></article>')
+    html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
+<main id="main">
+{p_hero(lang, "film", f["k"], f["h1"], "", f["lead"])}
+
+<section class="sec"><div class="wrap"><div class="text-col reveal">{about}</div></div></section>
+
+<section class="sec alt"><div class="wrap">
+  <div class="sec-head reveal"><span class="label">{f["films_k"]}</span><h2 class="display d-lg">{two_tone(f["films_h"], "")}</h2></div>
+  <div class="films-grid">{cards}</div>
+</div></section>
+
+{bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
+</main>
+
+''' + footer(lang)
+    write(path(lang, "film"), html)
+
+
+def build_latina(lang):
+    """A Latina in DC: ficha, reseñas, fotos, dossier de prensa y carteles."""
+    u, f = UI[lang], C.FILM[lang]
     posters = "".join(f'<div class="frame">{tile(k, [500, 800, 960], "(max-width:640px) 100vw, 380px", f"A Latina in DC – poster {n}", f"A Latina in DC {n}", ratio=r)}</div>'
                       for n, (k, r) in enumerate([("poster", "1122/1402"), ("poster2", "320/449"), ("owsf", "561/701")], 1))
     latina = "".join(f'<div class="frame">{bts_tile(stem, lang, cap[lang], LAT_URL, LAT_SIZES)}</div>' for stem, _n, cap in C.LATINA)
@@ -401,35 +446,31 @@ def build_film(lang):
         f'<figcaption><span class="rv-author">{esc(r["author"])}</span>'
         f'<a class="link-arrow" href="{r["url"]}" target="_blank" rel="noopener">{f["reviews_read"]} {ARROW}</a></figcaption></figure>'
         for r in C.REVIEWS)
-    html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
+    html = head(lang, "latina", [org_ld(), breadcrumb_ld(lang, "latina", u["nav"]["latina"])], og_key="poster") + header(lang, "latina", True) + f'''
 <main id="main">
-{p_hero(lang, "film", f["k"], f["h1"], "", f["lead"])}
+{p_hero(lang, "latina", u["nav"]["film"], f["film_h1"], "", "")}
 
-<section class="sec"><div class="wrap"><div class="text-col reveal">{about}</div></div></section>
-
-<section class="sec alt"><div class="wrap feat-grid">
+<section class="sec"><div class="wrap feat-grid">
   <div class="poster frame reveal">{pic("poster", [400, 600, 900], "(max-width:900px) 80vw, 460px", "A Latina in DC – poster")}</div>
   <div class="reveal" style="--d:.1s">
     <span class="label">{f["film_k"]}</span>
-    <h2 class="display d-xl">{two_tone(f["film_h1"], "")}</h2>
-    <div style="height:14px"></div>
     <span class="status">{f["film_status"]}</span>
     <p class="lead">{f["film_p"]}</p>
   </div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["reviews_k"]}</span><h2 class="display d-lg">{two_tone(f["reviews_h"], "")}</h2></div>
   <div class="reviews reveal">{reviews}</div>
   <div class="rv-all reveal"><a class="link-arrow" href="{C.LETTERBOXD_FILM}" target="_blank" rel="noopener">{f["reviews_all"]} {ARROW}</a></div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["photos_k"]}</span><h2 class="display d-lg">{two_tone(f["photos_h"], "")}</h2></div>
   <div class="gallery-sm reveal" data-gallery>{latina}</div>
 </div></section>
 
-<section class="sec"><div class="wrap">
+<section class="sec alt"><div class="wrap">
   <div class="kit reveal">
     <a class="kit-cover frame" href="/press-kit/A-Latina-in-DC-Press-Kit.pdf" target="_blank" rel="noopener" aria-label="{f["kit_h"]}"><img src="/assets/img/press-kit-cover.webp" alt="A Latina in DC – official press kit" width="900" height="636" loading="lazy" decoding="async"></a>
     <div class="kit-text">
@@ -442,21 +483,35 @@ def build_film(lang):
   </div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
+<section class="sec"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["gallery_k"]}</span><h2 class="display d-lg">{two_tone(f["gallery_h"], "")}</h2></div>
   <div class="grid-3 reveal" data-gallery>{posters}</div>
-</div></section>
-
-<section class="sec"><div class="wrap">
-  <div class="sec-head reveal"><span class="label">{f["dev_k"]}</span><h2 class="display d-lg">{two_tone(f["dev_h"], "")}</h2></div>
-  <div class="soon reveal">{icon("film")}<p>{f["dev_p"]}</p></div>
 </div></section>
 
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
 </main>
 
 ''' + footer(lang)
-    write(path(lang, "film"), html)
+    write(path(lang, "latina"), html)
+
+
+def build_filmdev(lang):
+    """Proyectos en desarrollo de One Woman Show Films."""
+    u, f = UI[lang], C.FILM[lang]
+    html = head(lang, "filmdev", [org_ld(), breadcrumb_ld(lang, "filmdev", u["nav"]["filmdev"])], og_key="owsf") + header(lang, "filmdev", True) + f'''
+<main id="main">
+{p_hero(lang, "filmdev", u["nav"]["film"], f["dev_h"], "", "")}
+
+<section class="sec"><div class="wrap">
+  <div class="soon reveal" style="margin-top:0">{icon("film")}<p>{f["dev_p"]}</p></div>
+  <div class="rv-all reveal"><a class="link-arrow" href="{path(lang, "latina")}">A Latina in DC {ARROW}</a></div>
+</div></section>
+
+{bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
+</main>
+
+''' + footer(lang)
+    write(path(lang, "filmdev"), html)
 
 
 def build_press(lang):
@@ -577,9 +632,11 @@ if __name__ == "__main__":
         build_home(lang)
         build_acting(lang)
         build_film(lang)
+        build_latina(lang)
+        build_filmdev(lang)
         build_press(lang)
         build_artwork(lang)
         build_contact(lang)
     write_support()
     make_media()
-    print("built: 12 pages")
+    print(f"built: {len(C.PAGES) * 2} pages")
