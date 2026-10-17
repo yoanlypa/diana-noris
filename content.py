@@ -312,6 +312,10 @@ REVIEWS = [
      "text": "I was very impressed with all the performances. This film was funny and I’m sure, relatable too."},
     {"author": "Nerdyforfilms", "stars": 5, "url": "https://letterboxd.com/nerdyforfilms/film/a-latina-in-dc/",
      "text": "I really loved how natural everyone’s acting felt, especially the two main actresses who play Eva and her friend. They have really great chemistry together."},
+    {"author": "leximoran89", "stars": 5, "url": "https://letterboxd.com/leximoran89/film/a-latina-in-dc/",
+     "text": "It's funny, relatable, and such an easy watch. I actually wish it had been longer!"},
+    {"author": "Madridfilmfest", "stars": 5, "url": "https://letterboxd.com/madridfilmfest/film/a-latina-in-dc/",
+     "text": "Really cool and refreshing short film! … Really entertaining film, and I enjoyed watching it!"},
 ]
 
 PRESS = {
