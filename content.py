@@ -316,6 +316,12 @@ REVIEWS = [
      "text": "It's funny, relatable, and such an easy watch. I actually wish it had been longer!"},
     {"author": "Madridfilmfest", "stars": 5, "url": "https://letterboxd.com/madridfilmfest/film/a-latina-in-dc/",
      "text": "Really cool and refreshing short film! … Really entertaining film, and I enjoyed watching it!"},
+    {"author": "lautorresalb", "stars": 5, "url": "https://letterboxd.com/lautorresalb/film/a-latina-in-dc/", "lang": "es",
+     "text": "Te ríes con cada desastre porque sientes que te lo está contando una amiga en confianza. Fresca, necesaria y muy bien llevada."},
+    {"author": "KDubMovies", "stars": 5, "url": "https://letterboxd.com/kdubmovies/film/a-latina-in-dc/",
+     "text": "What a charming and REAL film about dating in DC! The \"dates\" were wonderfully awful!"},
+    {"author": "Univisiontvana", "stars": 5, "url": "https://letterboxd.com/univisiontvana/film/a-latina-in-dc/",
+     "text": "One word: RELATABLE! Such a super cute, girly, fun film with really good actors!"},
 ]
 
 PRESS = {

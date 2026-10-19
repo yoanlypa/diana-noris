@@ -442,7 +442,7 @@ def build_latina(lang):
     reviews = "".join(
         '<figure class="rv">'
         + (f'<span class="rv-stars" role="img" aria-label="{r["stars"]} {stars_lbl}">{"★" * r["stars"]}</span>' if r["stars"] else "")
-        + f'<blockquote lang="en">{esc(r["text"])}</blockquote>'
+        + f'<blockquote lang="{r.get("lang", "en")}">{esc(r["text"])}</blockquote>'
         f'<figcaption><span class="rv-author">{esc(r["author"])}</span>'
         f'<a class="link-arrow" href="{r["url"]}" target="_blank" rel="noopener">{f["reviews_read"]} {ARROW}</a></figcaption></figure>'
         for r in C.REVIEWS)
