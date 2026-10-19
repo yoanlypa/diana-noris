@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261024"
+V = "20261025"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -442,10 +442,11 @@ def build_latina(lang):
     reviews = "".join(
         '<figure class="rv">'
         + (f'<span class="rv-stars" role="img" aria-label="{r["stars"]} {stars_lbl}">{"★" * r["stars"]}</span>' if r["stars"] else "")
-        + f'<blockquote lang="{r.get("lang", "en")}">{esc(r["text"])}</blockquote>'
+        + f'<blockquote lang="{r.get("lang", "en")}">' + "".join(f'<p>{"<br>".join(esc(l) for l in para.split(chr(10)))}</p>' for para in r["text"]) + '</blockquote>'
         f'<figcaption><span class="rv-author">{esc(r["author"])}</span>'
         f'<a class="link-arrow" href="{r["url"]}" target="_blank" rel="noopener">{f["reviews_read"]} {ARROW}</a></figcaption></figure>'
         for r in C.REVIEWS)
+    reviews_attrs = f'data-more="{esc(f["reviews_more"])}" data-less="{esc(f["reviews_less"])}"'
     html = head(lang, "latina", [org_ld(), breadcrumb_ld(lang, "latina", u["nav"]["latina"])], og_key="poster") + header(lang, "latina", True) + f'''
 <main id="main">
 {p_hero(lang, "latina", u["nav"]["film"], f["film_h1"], "", "")}
@@ -461,7 +462,7 @@ def build_latina(lang):
 
 <section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["reviews_k"]}</span><h2 class="display d-lg">{two_tone(f["reviews_h"], "")}</h2></div>
-  <div class="reviews reveal">{reviews}</div>
+  <div class="reviews reveal" {reviews_attrs}>{reviews}</div>
   <div class="rv-all reveal"><a class="link-arrow" href="{C.LETTERBOXD_FILM}" target="_blank" rel="noopener">{f["reviews_all"]} {ARROW}</a></div>
 </div></section>
 

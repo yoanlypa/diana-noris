@@ -78,4 +78,24 @@
     lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
     doc.addEventListener("keydown", function (e) { if (!lb.classList.contains("open")) return; if (e.key === "Escape") close(); else if (e.key === "ArrowLeft") show(idx - 1); else if (e.key === "ArrowRight") show(idx + 1); });
   }, "lightbox");
+  /* reseñas largas: se recortan con «Leer más» (sin JS se ven completas) */
+  safe(function () {
+    $$(".reviews").forEach(function (wrap) {
+      var more = wrap.getAttribute("data-more") || "Read more", less = wrap.getAttribute("data-less") || "Read less";
+      $$(".rv blockquote", wrap).forEach(function (q, i) {
+        q.classList.add("is-clamped");
+        if (q.scrollHeight <= q.clientHeight + 8) { q.classList.remove("is-clamped"); return; }
+        if (!q.id) q.id = "rv-q" + i;
+        var b = doc.createElement("button");
+        b.type = "button"; b.className = "rv-more"; b.textContent = more;
+        b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", q.id);
+        b.addEventListener("click", function () {
+          var open = q.classList.toggle("is-clamped") === false;
+          b.textContent = open ? less : more; b.setAttribute("aria-expanded", open ? "true" : "false");
+          if (!open) q.closest(".rv").scrollIntoView({ block: "nearest", behavior: "smooth" });
+        });
+        q.parentNode.insertBefore(b, q.nextSibling);
+      });
+    });
+  }, "reviews");
 })();
