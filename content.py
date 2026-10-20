@@ -62,7 +62,27 @@ MEDIA = {
     "logo_imdb": "e29a2896a6c84f5a95ab6398655bd858~mv2.png",
     "logo_aa": "1fbca671225a4599bf58f1a1957766f2~mv2.png",      # Actors Access
 }
+# Pósters de los proyectos en desarrollo (originales propios, no vienen de Wix).
+MEDIA["dev_nemesis"] = "local:dev_nemesis.png"
+MEDIA["dev_dad"] = "local:dev_dad.png"
+MEDIA["press_malaga"] = "local:press_malaga.jpg"
 MEDIA_KEY = {v: k for k, v in MEDIA.items()}
+
+# --------------------------------------------------------------- proyectos en desarrollo (página In development / En desarrollo)
+DEV_FILMS = [
+    {"key": "dev_nemesis", "title": "My Daughter, My Nemesis", "stage": {"en": "Writing stage", "es": "En escritura"}},
+    {"key": "dev_dad", "title": "DAD", "stage": {"en": "Preproduction", "es": "Preproducción"}},
+]
+# Reportaje de revista que se muestra en Actuación, One Woman Show Films y Prensa.
+PRESS_FEATURE = {
+    "key": "press_malaga",
+    "k": {"en": "Press", "es": "Prensa"},
+    "h": {"en": "In the press", "es": "En la prensa"},
+    "cap": {"en": "Cine & Cultura · October 2026 — Diana Noris Smith at the 32nd French Film Festival of Málaga",
+            "es": "Cine & Cultura · Octubre 2026 — Diana Noris Smith en el 32.º Festival de Cine Francés de Málaga"},
+}
+# Tráiler de A Latina in DC (YouTube).
+LATINA_TRAILER = {"provider": "youtube", "id": "6sAGGMkCcF8", "title": {"en": "A Latina in DC – Official trailer", "es": "A Latina in DC – Tráiler oficial"}}
 
 # --------------------------------------------------------------- representación (copiado de su web actual)
 AGENCY = {
@@ -277,7 +297,7 @@ FILM = {
         "dev_p": "Diana continues to develop new projects. Details will be announced here.",
         "reviews_k": "Reviews", "reviews_h": "What audiences say",
         "reviews_read": "Read on Letterboxd", "reviews_more": "Read more", "reviews_less": "Read less", "reviews_all": "See the film on Letterboxd",
-        "films_k": "Films", "films_h": "Our films", "films_view": "View the film", "films_more": "Learn more",
+        "trailer_k": "Trailer", "films_k": "Films", "films_h": "Our films", "films_view": "View the film", "films_more": "Learn more",
     },
     "es": {
         "k": "Cine", "h1": "One Woman Show Films", "h2": "Historias valientes, centradas en los personajes",
@@ -296,7 +316,7 @@ FILM = {
         "dev_p": "Diana sigue desarrollando nuevos proyectos. Los detalles se anunciarán aquí.",
         "reviews_k": "Reseñas", "reviews_h": "Lo que dice el público",
         "reviews_read": "Leer en Letterboxd", "reviews_more": "Leer más", "reviews_less": "Leer menos", "reviews_all": "Ver la película en Letterboxd",
-        "films_k": "Películas", "films_h": "Nuestras películas", "films_view": "Ver la película", "films_more": "Más información",
+        "trailer_k": "Tráiler", "films_k": "Películas", "films_h": "Nuestras películas", "films_view": "Ver la película", "films_more": "Más información",
     },
 }
 

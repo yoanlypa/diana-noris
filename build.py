@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261025"
+V = "20261027"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -336,6 +336,16 @@ def build_home(lang):
     write(path(lang, "home"), html)
 
 
+def press_feature(lang, cls="sec"):
+    """Reportaje de revista (C.PRESS_FEATURE) ampliable; se usa en varias páginas."""
+    p = C.PRESS_FEATURE
+    cap = p["cap"][lang]
+    return (f'<section class="{cls}"><div class="wrap">\n'
+            f'  <div class="sec-head reveal"><span class="label">{p["k"][lang]}</span><h2 class="display d-lg">{two_tone(p["h"][lang], "")}</h2></div>\n'
+            f'  <figure class="press-feature reveal" data-gallery><div class="frame">{tile(p["key"], [800, 1200, 1600], "(max-width:1100px) 100vw, 1100px", cap, cap, ratio="3/2")}</div>'
+            f'<figcaption>{cap}</figcaption></figure>\n</div></section>\n')
+
+
 def build_acting(lang):
     u, a = UI[lang], C.ACTING[lang]
     hm = C.HOME[lang]
@@ -394,6 +404,7 @@ def build_acting(lang):
   </div>
 </div></section>
 
+{press_feature(lang, "sec")}
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
 </main>
 
@@ -411,7 +422,7 @@ def build_film(lang):
         f'{pic("poster", [400, 600, 900], "(max-width:800px) 100vw, 560px", "A Latina in DC – poster")}</a>'
         f'<div class="fc-body"><span class="status">{f["film_status"]}</span><h2 class="display d-md">A Latina in DC</h2>'
         f'<p>{f["film_p"]}</p><a class="link-arrow" href="{lat}">{f["films_view"]} {ARROW}</a></div></article>'
-        f'<article class="film-card reveal" style="--d:.1s"><a class="fc-media fc-soon" href="{dev}" aria-label="{u["nav"]["filmdev"]}">{icon("film")}</a>'
+        f'<article class="film-card reveal" style="--d:.1s"><a class="fc-media" href="{dev}" aria-label="{u["nav"]["filmdev"]}">{pic(C.DEV_FILMS[0]["key"], [400, 600, 900], "(max-width:800px) 100vw, 560px", C.DEV_FILMS[0]["title"] + " – poster")}</a>'
         f'<div class="fc-body"><span class="status">{f["dev_k"]}</span><h2 class="display d-md">{f["dev_h"]}</h2>'
         f'<p>{f["dev_p"]}</p><a class="link-arrow" href="{dev}">{f["films_more"]} {ARROW}</a></div></article>')
     html = head(lang, "film", [org_ld(), breadcrumb_ld(lang, "film", u["nav"]["film"])], og_key="poster") + header(lang, "film", True) + f'''
@@ -425,6 +436,7 @@ def build_film(lang):
   <div class="films-grid">{cards}</div>
 </div></section>
 
+{press_feature(lang, "sec")}
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
 </main>
 
@@ -458,7 +470,9 @@ def build_latina(lang):
     <span class="status">{f["film_status"]}</span>
     <p class="lead">{f["film_p"]}</p>
   </div>
-</div></section>
+</div>
+<div class="wrap trailer reveal"><span class="label">{f["trailer_k"]}</span><div class="frame">{video_block(C.LATINA_TRAILER, lang)}</div></div>
+</section>
 
 <section class="sec alt"><div class="wrap">
   <div class="sec-head reveal"><span class="label">{f["reviews_k"]}</span><h2 class="display d-lg">{two_tone(f["reviews_h"], "")}</h2></div>
@@ -497,15 +511,17 @@ def build_latina(lang):
 
 
 def build_filmdev(lang):
-    """Proyectos en desarrollo de One Woman Show Films."""
+    """Proyectos en desarrollo de One Woman Show Films: solo los pósters (ampliables)."""
     u, f = UI[lang], C.FILM[lang]
+    dev_posters = "".join(
+        f'<div class="frame">{tile(d["key"], [400, 700, 1000], "(max-width:800px) 100vw, 600px", d["title"] + " – " + d["stage"][lang], d["title"] + " · " + d["stage"][lang])}</div>'
+        for d in C.DEV_FILMS)
     html = head(lang, "filmdev", [org_ld(), breadcrumb_ld(lang, "filmdev", u["nav"]["filmdev"])], og_key="owsf") + header(lang, "filmdev", True) + f'''
 <main id="main">
 {p_hero(lang, "filmdev", u["nav"]["film"], f["dev_h"], "", "")}
 
 <section class="sec"><div class="wrap">
-  <div class="soon reveal" style="margin-top:0">{icon("film")}<p>{f["dev_p"]}</p></div>
-  <div class="rv-all reveal"><a class="link-arrow" href="{path(lang, "latina")}">A Latina in DC {ARROW}</a></div>
+  <div class="dev-posters reveal" data-gallery>{dev_posters}</div>
 </div></section>
 
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
@@ -536,6 +552,7 @@ def build_press(lang):
   <div class="sec-head reveal"><span class="label">{p["seen_h"]}</span></div>
   <div class="reveal" data-gallery>{seen}</div>
 </div></section>
+{press_feature(lang, "sec alt")}
 {bigcta(lang, C.HOME[lang]["cta_h1"], C.HOME[lang]["cta_h2"], C.HOME[lang]["cta_p"])}
 </main>
 

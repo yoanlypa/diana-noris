@@ -397,3 +397,18 @@ h1,h2,h3,p{margin:0}
 .fc-body .status,.fc-body h2,.fc-body p{margin:0}
 .fc-body .link-arrow{margin-top:auto;padding-top:6px}
 @media (max-width:800px){.films-grid{grid-template-columns:minmax(0,1fr)}.fc-body{padding:24px 22px 28px}}
+
+/* tráiler (A Latina in DC) y pósters en desarrollo */
+.trailer{margin-top:clamp(50px,7vw,90px)}
+.trailer .frame{max-width:980px}
+.dev-posters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,3vw,40px);align-items:start}
+.dev-posters .tile img{width:100%;height:auto;display:block;border-radius:3px}
+@media (max-width:700px){.dev-posters{grid-template-columns:minmax(0,1fr)}}
+.press-feature{margin:0;max-width:1100px}
+.press-feature .tile img{width:100%;height:100%;object-fit:cover;display:block;border-radius:3px}
+.press-feature figcaption{margin-top:16px;font-family:var(--f-ui);font-size:14.5px;color:var(--mid)}
+/* pósters en desarrollo a la misma altura: cada columna proporcional a su póster (756x827 y 665x827) */
+.dev-posters{grid-template-columns:756fr 665fr}
+@media (max-width:700px){.dev-posters{grid-template-columns:minmax(0,1fr)}}
+/* títulos muy largos (p. ej. "DESARROLLO") no se salen en móvil */
+@media (max-width:480px){.p-hero .d-xl{font-size:clamp(38px,11.5vw,64px)}}
