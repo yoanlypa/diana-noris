@@ -8,7 +8,7 @@ import content as C  # noqa: E402
 from content import UI, MEDIA, img, img_png, path, DOMAIN  # noqa: E402
 
 SITE = Path(__file__).resolve().parent / "site"
-V = "20261027"
+V = "20261028"
 OTHER = {"en": "es", "es": "en"}
 
 # ---------------------------------------------------------------- iconos
@@ -229,7 +229,7 @@ def footer(lang):
       <div><h4>{u["explore"]}</h4><ul>{explore}</ul></div>
       <div><h4>{u["follow"]}</h4><ul>{soc}</ul></div>
     </div>
-    <div class="f-bottom"><span>© 2026 Diana Noris · {u["rights"]}{demo}</span><span>Spain · New York</span></div>
+    <div class="f-bottom"><span>© 2026 Diana Noris · {u["rights"]}{demo}</span><span>Spain · New York</span><span class="f-credit">{"Diseño web" if lang == "es" else "Web design"}: <a href="https://yoapro.site" target="_blank" rel="noopener">YOA PRO</a></span></div>
   </div>
 </footer>
 
