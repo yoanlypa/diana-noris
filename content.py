@@ -362,6 +362,12 @@ REVIEWS = [
               "And OMG, the music! Orchestral Manoeuvres in the Dark! What an amazing soundtrack! The music brought so much to the film, and honestly, that soundtrack is priceless.",
               "This should've been a feature film because there's so much more to explore, and it covers so many things women are experiencing in today's world. I would've happily watched another hour of it!",
               "Really enjoyed this one, especially the music! Five stars in my book! ⭐⭐⭐⭐⭐"]},
+    {"author": "wayne_unchained", "stars": 5, "url": "https://letterboxd.com/wayne_unchained/film/a-latina-in-dc/",
+     "text": ["A fun ride that everyone who has ever been in the dating scene anywhere can relate too!"]},
+    {"author": "Maribeta26", "stars": 5, "url": "https://letterboxd.com/maribeta26/film/a-latina-in-dc/",
+     "text": ["I really enjoyed watching A Latina in DC! Unfortunately many of my Latinas Girlfriends has gone through similar dating experiences, which made the film feel so relatable. The reality of older men’s using dating photos on their dating profiles made me laugh! Love the Spanish humor!!!A real life great short film entertaining. Great Cast!! Bravo !!"]},
+    {"author": "yoanly", "stars": 5, "url": "https://letterboxd.com/yoanly/film/a-latina-in-dc/",
+     "text": ["A 30-minute short that flies by. Great acting, and we laughed a lot! We’re immigrants too, so there were things we could totally relate to!"]},
 ]
 
 PRESS = {
