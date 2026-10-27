@@ -168,7 +168,7 @@ def page(lang, I):
     ld = [{"@context": "https://schema.org", "@type": "Organization", "@id": X.DOMAIN + "/#org", "name": "One Woman Show Films",
            "url": X.DOMAIN + home(lang), "slogan": "Women-centered stories with a point of view.", "description": t["about_p"],
            "founder": {"@type": "Person", "name": "Diana Noris Smith", "url": X.DIANA_SITE, "sameAs": [imdb]},
-           "location": ["New York", "Málaga"]},
+           "location": ["New York", "Málaga"], "sameAs": [X.INSTAGRAM]},
           {"@context": "https://schema.org", "@type": "Movie", "name": "A Latina in DC", "genre": t["genre"], "description": F["film_p"],
            "director": {"@type": "Person", "name": DIRECTOR}, "productionCompany": {"@id": X.DOMAIN + "/#org"},
            "image": X.DOMAIN + I["poster"][1000][0], "trailer": {"@type": "VideoObject", "name": t["trailer_cap"],
@@ -289,7 +289,7 @@ def page(lang, I):
 <section class="sec alt center" id="contact">
   {label(t["contact_k"])}{heading(t["contact_h1"], t["contact_h2"])}
   <p class="lede reveal">{t["contact_p"]}</p>
-  <div class="btn-row center-row"><a class="btn" href="{contact_url}" target="_blank" rel="noopener">{t["contact_btn"]} {ARROW}</a><a class="btn ghost" href="{ig}" target="_blank" rel="noopener me">Instagram</a></div>
+  <div class="btn-row center-row"><a class="btn" href="{contact_url}" target="_blank" rel="noopener">{t["contact_btn"]} {ARROW}</a><a class="btn ghost" href="{X.INSTAGRAM}" target="_blank" rel="noopener me">Instagram {X.INSTAGRAM_HANDLE}</a></div>
   <p class="cities">{t["about_cities"]}</p>
 </section>
 
@@ -298,7 +298,7 @@ def page(lang, I):
 <footer class="ftr">
   <div class="wrap ftr-grid">
     <a href="{home(lang)}" aria-label="One Woman Show Films">{logo()}</a>
-    <ul class="ftr-nav">{"".join(f'<li><a href="#{k}">{v}</a></li>' for k, v in t["nav"])}<li><a href="{home(other)}" hreflang="{other}">{X.T[other]["lang_name"]}</a></li></ul>
+    <ul class="ftr-nav">{"".join(f'<li><a href="#{k}">{v}</a></li>' for k, v in t["nav"])}<li><a href="{home(other)}" hreflang="{other}">{X.T[other]["lang_name"]}</a></li><li><a href="{X.INSTAGRAM}" target="_blank" rel="noopener me">Instagram {X.INSTAGRAM_HANDLE}</a></li></ul>
   </div>
   <div class="wrap ftr-bottom"><span>© 2026 One Woman Show Films · {t["rights"]}</span><span class="credit">{t["credit"]}: <a href="https://yoapro.site" target="_blank" rel="noopener">YOA PRO</a></span></div>
 </footer>

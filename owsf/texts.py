@@ -7,6 +7,8 @@ Edita aquí y ejecuta:  python owsf/build.py
 
 DOMAIN = "https://www.onewomanshowfilms.com"
 DIANA_SITE = "https://www.diananoris.com"
+INSTAGRAM = "https://www.instagram.com/onewomanshowfilms/"  # Instagram de la productora
+INSTAGRAM_HANDLE = "@onewomanshowfilms"
 LETTERBOXD = "https://letterboxd.com/film/a-latina-in-dc/"
 PRESS_KIT = "/press-kit/A-Latina-in-DC-Press-Kit.pdf"
 
