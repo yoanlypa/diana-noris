@@ -12,6 +12,8 @@ PRESS_KIT = "/press-kit/A-Latina-in-DC-Press-Kit.pdf"
 
 # Fotos de la portada (fotogramas de A Latina in DC, en orden de aparición).
 HERO_SLIDES = ["lat-04", "lat-03", "lat-07"]
+# Punto de enfoque horizontal de cada foto en móvil (dónde está la cara), en % del ancho.
+HERO_FOCUS = {"lat-04": "31%", "lat-03": "66%", "lat-07": "58%"}
 # Fotogramas de la galería «Inside the film».
 STILLS = ["lat-02", "lat-06", "lat-05", "lat-15", "lat-16", "lat-14", "lat-09", "lat-20"]
 

@@ -20,7 +20,7 @@ import texts as X  # noqa: E402
 
 SITE = HERE / "site"
 IMG = SITE / "assets" / "img"
-V = "20261027"
+V = "20261027b"
 
 STARRING = "Diana Noris Smith, Jonathan Turpin, Nick Blanchet, Francesco Pultro, Rick Jermain"
 DIRECTOR, FILMMAKER = "Diana Noris", "Nick Blanchet"
@@ -142,7 +142,7 @@ def page(lang, I):
     bio = C.HOME[lang]["bio"]
     founder_bio = "".join(f"<p>{p}</p>" for p in (bio[0], bio[1], bio[3]))
     slides = "".join(
-        f'<div class="slide{" on" if i == 0 else ""}">{img_tag(I[k], "100vw", "A Latina in DC", lazy=i > 0, w_default=1600)}</div>'
+        f'<div class="slide{" on" if i == 0 else ""}" style="--fx:{X.HERO_FOCUS.get(k, "50%")}">{img_tag(I[k], "(max-width: 900px) 1600px, 100vw", "A Latina in DC", lazy=i > 0, w_default=1600)}</div>'
         for i, k in enumerate(X.HERO_SLIDES))
     tags = "".join(f"<li>{x}</li>" for x in t["hero_tags"])
     facts = [(t["f_title"], "A Latina in DC"), (t["f_genre"], t["genre"]), (t["f_logline"], F["film_p"]),

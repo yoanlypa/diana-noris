@@ -196,3 +196,15 @@ h3.title{font-size:clamp(30px,3.4vw,44px);margin-bottom:40px}
 .hero-tags{gap:8px 0}
 .hero-tags li{border:0;padding:0}
 .hero-tags li+li::before{content:"·";color:var(--red-l);margin:0 14px}
+
+/* portada en móvil: foto centrada en la cara, texto abajo, sin sobreampliar */
+@media (max-width:760px){
+  .hero{height:100svh;align-items:flex-end;padding-bottom:120px}
+  .slide img{object-position:var(--fx,50%) 30%;transform:scale(1.01)}
+  @keyframes kb{from{transform:scale(1.01)}to{transform:scale(1.06)}}
+  .hero-shade{background:linear-gradient(180deg,rgba(13,11,11,.75) 0,rgba(13,11,11,0) 150px),linear-gradient(0deg,var(--bg) 0%,rgba(13,11,11,.86) 30%,rgba(13,11,11,.35) 60%,rgba(13,11,11,.15) 100%)}
+  .hero-tags{flex-direction:column;gap:10px}
+  .hero-tags li+li::before{content:none}
+  .hero-tags li,.hero-tags li:first-child{padding-left:16px;position:relative}
+  .hero-tags li::after{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;background:var(--red-l)}
+}
