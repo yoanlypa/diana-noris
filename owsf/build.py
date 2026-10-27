@@ -22,7 +22,7 @@ SITE = HERE / "site"
 IMG = SITE / "assets" / "img"
 V = "20261027b"
 
-STARRING = "Diana Noris Smith, Jonathan Turpin, Nick Blanchet, Francesco Pultro, Rick Jermain"
+STARRING = ", ".join(a for a, _c in X.CAST)
 DIRECTOR, FILMMAKER = "Diana Noris", "Nick Blanchet"
 
 
@@ -149,6 +149,11 @@ def page(lang, I):
              (t["f_director"], DIRECTOR), (t["f_filmmaker"], FILMMAKER), (t["f_starring"], STARRING),
              (t["f_runtime"], t["runtime"]), (t["f_filmed"], t["filmed"])]
     facts_html = "".join(f"<p><b>{k}:</b> {esc(v)}</p>" for k, v in facts)
+    li = lambda a, b: f'<li><span class="cc-a">{esc(a)}</span><span class="cc-b">{esc(b)}</span></li>'
+    cast_html = (f'<h4 class="cc-h">{t["cast_h"]}</h4><ul class="cc">' + "".join(li(a, c) for a, c in X.CAST) + "</ul>"
+                 f'<h4 class="cc-h">{t["crew_h"]}</h4><ul class="cc crew">'
+                 + "".join(f'<li><span class="cc-r">{esc(en if lang == "en" else es)}</span><span class="cc-a">{esc(n)}</span></li>' for en, es, n in X.CREW) + "</ul>"
+                 f'<p class="cc-more"><a href="{X.IMDB_FILM}" target="_blank" rel="noopener">{t["imdb_all"]} {ARROW}</a></p>')
     quotes = "".join(
         f'<figure class="q"><span class="q-stars" role="img" aria-label="{t["stars"]}">★★★★★</span>'
         f'<blockquote lang="{"es" if a == "lautorresalb" else "en"}">“{esc(q)}”</blockquote><figcaption>— {esc(a)}, Letterboxd</figcaption></figure>'
@@ -170,7 +175,7 @@ def page(lang, I):
            "founder": {"@type": "Person", "name": "Diana Noris Smith", "url": X.DIANA_SITE, "sameAs": [imdb]},
            "location": ["New York", "Málaga"], "sameAs": [X.INSTAGRAM]},
           {"@context": "https://schema.org", "@type": "Movie", "name": "A Latina in DC", "genre": t["genre"], "description": F["film_p"],
-           "director": {"@type": "Person", "name": DIRECTOR}, "productionCompany": {"@id": X.DOMAIN + "/#org"},
+           "director": {"@type": "Person", "name": DIRECTOR}, "actor": [{"@type": "Person", "name": a} for a, _c in X.CAST], "sameAs": [X.IMDB_FILM], "productionCompany": {"@id": X.DOMAIN + "/#org"},
            "image": X.DOMAIN + I["poster"][1000][0], "trailer": {"@type": "VideoObject", "name": t["trailer_cap"],
            "embedUrl": f'https://www.youtube.com/embed/{C.LATINA_TRAILER["id"]}', "thumbnailUrl": f'https://i.ytimg.com/vi/{C.LATINA_TRAILER["id"]}/hqdefault.jpg',
            "description": t["trailer_cap"], "uploadDate": "2026-10-20"}}]
@@ -248,6 +253,7 @@ def page(lang, I):
     </div>
     <div class="acc reveal">
       <details open><summary>{t["acc_about"]}</summary><div class="acc-body">{facts_html}</div></details>
+      <details><summary>{t["acc_cast"]}</summary><div class="acc-body">{cast_html}</div></details>
       <details><summary>{t["acc_festival"]}</summary><div class="acc-body"><p>{t["festival_p"]}</p></div></details>
       <details><summary>{t["acc_kit"]}</summary><div class="acc-body kit">
         <a class="kit-cover" href="{X.PRESS_KIT}" target="_blank" rel="noopener"><img src="/assets/img/press-kit-cover.webp" alt="A Latina in DC – press kit" width="900" height="636" loading="lazy" decoding="async"></a>

@@ -9,6 +9,27 @@ DOMAIN = "https://www.onewomanshowfilms.com"
 DIANA_SITE = "https://www.diananoris.com"
 INSTAGRAM = "https://www.instagram.com/onewomanshowfilms/"  # Instagram de la productora
 INSTAGRAM_HANDLE = "@onewomanshowfilms"
+IMDB_FILM = "https://www.imdb.com/title/tt39024802/"
+# Reparto y equipo según IMDb (fullcredits, octubre 2026): (actor, personaje)
+CAST = [
+    ("Diana Noris Smith", "Eva Gonzalez"), ("Jonathan Turpin", "Maurizio Rossi"),
+    ("Martina Schabron", "Lauren Smith"), ("Danny Burk", "Kenn"),
+    ("Tyler Herman", "Josh Mercer"), ("Rick Jermain", "Donald Hutchinson"),
+    ("Sterling Morse Jr.", "Peter Williams"), ("Francesco Pultro", "Paul Miller"),
+]
+# (puesto EN, puesto ES, nombres)
+CREW = [
+    ("Director", "Dirección", "Diana Noris Smith"),
+    ("Writer", "Guion", "Diana Noris Smith"),
+    ("Executive producer", "Producción ejecutiva", "Diana Noris Smith"),
+    ("Cinematography", "Dirección de fotografía", "Nick Blanchet, José Manrique de Lara"),
+    ("Editor", "Montaje", "Nayan Talwadiya"),
+    ("Sound mixer", "Sonido directo", "Batya Rossberg"),
+    ("Sound editor", "Edición de sonido", "Hrishikesh Vasishth"),
+    ("Gaffer", "Jefe de eléctricos", "Ian Johnson"),
+    ("Assistant camera / grip", "Ayudante de cámara / maquinista", "Warren Spears"),
+    ("Script supervisor", "Continuidad", "Diana Noris Smith"),
+]
 LETTERBOXD = "https://letterboxd.com/film/a-latina-in-dc/"
 PRESS_KIT = "/press-kit/A-Latina-in-DC-Press-Kit.pdf"
 
@@ -51,7 +72,7 @@ T = {
         "founder_more": "Visit diananoris.com",
         "latest_k": "Projects", "latest_h1": "Latest:", "latest_h2": "A Latina in DC",
         "trailer_cap": "A Latina in DC — Official trailer",
-        "acc_about": "About A Latina in DC", "acc_festival": "Festival journey", "acc_kit": "Press kit",
+        "acc_about": "About A Latina in DC", "acc_cast": "Cast & crew", "cast_h": "Cast", "crew_h": "Crew", "imdb_all": "Full credits on IMDb", "acc_festival": "Festival journey", "acc_kit": "Press kit",
         "f_title": "Title", "f_genre": "Genre", "f_logline": "Logline", "f_director": "Director", "f_filmmaker": "Filmmaker",
         "f_starring": "Starring", "f_runtime": "Runtime", "f_filmed": "Filmed in",
         "genre": "Dark comedy inspired by a true story", "runtime": "30 minutes", "filmed": "Washington, D.C., Virginia and Madrid",
@@ -91,7 +112,7 @@ T = {
         "founder_more": "Visita diananoris.com",
         "latest_k": "Proyectos", "latest_h1": "Última película:", "latest_h2": "A Latina in DC",
         "trailer_cap": "A Latina in DC — Tráiler oficial",
-        "acc_about": "Sobre A Latina in DC", "acc_festival": "Recorrido por festivales", "acc_kit": "Dossier de prensa",
+        "acc_about": "Sobre A Latina in DC", "acc_cast": "Reparto y equipo", "cast_h": "Reparto", "crew_h": "Equipo técnico", "imdb_all": "Créditos completos en IMDb", "acc_festival": "Recorrido por festivales", "acc_kit": "Dossier de prensa",
         "f_title": "Título", "f_genre": "Género", "f_logline": "Sinopsis", "f_director": "Dirección", "f_filmmaker": "Filmmaker",
         "f_starring": "Reparto", "f_runtime": "Duración", "f_filmed": "Rodada en",
         "genre": "Comedia negra inspirada en una historia real", "runtime": "30 minutos", "filmed": "Washington D. C., Virginia y Madrid",

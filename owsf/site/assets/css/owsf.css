@@ -208,3 +208,15 @@ h3.title{font-size:clamp(30px,3.4vw,44px);margin-bottom:40px}
   .hero-tags li,.hero-tags li:first-child{padding-left:16px;position:relative}
   .hero-tags li::after{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;background:var(--red-l)}
 }
+
+/* reparto y equipo */
+.cc-h{font-family:var(--f-label);font-weight:400;text-transform:uppercase;letter-spacing:.2em;color:var(--red-l);font-size:13px;margin:6px 0 10px}
+.cc{list-style:none;margin:0 0 22px;padding:0}
+.cc li{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px dashed var(--line)}
+.cc-a{color:var(--cream)}
+.cc-b{color:var(--mid);font-style:italic;text-align:right}
+.cc-more{margin:0}
+.cc-more a{color:var(--red-l);display:inline-flex;align-items:center;gap:6px}
+.cc-more svg{width:14px;height:14px;flex:none}
+.cc-r{color:var(--mid);font-family:var(--f-label);font-weight:300;text-transform:uppercase;letter-spacing:.1em;font-size:12.5px;padding-top:3px}
+.crew .cc-a{text-align:right}
