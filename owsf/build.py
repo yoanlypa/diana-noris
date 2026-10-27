@@ -69,7 +69,7 @@ def prepare_images():
     I = {}
     for k in set(X.HERO_SLIDES + X.STILLS):
         I[k] = webp(lat / f"{k}.webp", k, [480, 960, 1600])
-    I["founder"] = webp(hs / "hs-01.webp", "diana-noris", [480, 800, 1100])
+    I["founder"] = webp(orig / "hs1_bw.jpg", "diana-noris-bn", [480, 800, 1100])
     I["poster"] = webp(orig / "poster.jpg", "a-latina-in-dc-poster", [400, 700, 1000])
     for d in C.DEV_FILMS:
         I[d["key"]] = webp(orig / f'{d["key"]}.png', d["key"].replace("_", "-"), [400, 700])
